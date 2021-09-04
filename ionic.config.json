@@ -1,0 +1,8 @@
+{
+  "name": "logistica-supermami-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "id": "38b13700"
+}
