@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SubsidiariesComponent } from './subsidiaries.component';
+import { SubsidiariesComponent } from './subsidiary.component';
 
 describe('SubsidiariesComponent', () => {
   let component: SubsidiariesComponent;
