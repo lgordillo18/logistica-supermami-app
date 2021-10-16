@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
- import { Router } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login-component',
+  selector: 'login',
   templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
 
@@ -25,6 +24,10 @@ export class LoginPage implements OnInit {
     }
 
     this.router.navigate([route]);
+  }
+
+  login() {
+    
   }
 }
 
