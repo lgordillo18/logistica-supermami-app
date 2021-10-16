@@ -12,4 +12,4 @@ import { IonicModule } from "@ionic/angular";
   ]
 })
 
-export class ConfigurationsModule {}
+export class TicketsModule {}
