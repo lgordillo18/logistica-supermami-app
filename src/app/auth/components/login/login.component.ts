@@ -17,11 +17,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log("HOLA");
+
+
     this.loginForm = this.formBuilder.group({
       user: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
     });
   }
+
   onCheckInputValidation(event) {
     const numberPattern = new RegExp('^[0-9\~]*$');
     const input = String.fromCharCode(event.charCode);

@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <form [formGroup]="userForm" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -27,7 +27,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="block" color="primary" (click)="onSubmit()">
+    <ion-button expand="block" color="primary" (click)="login()">
       Ingresar
     </ion-button>
   </ion-toolbar>
