@@ -1,56 +1,57 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { LoginUser } from '../../../models/login';
+import { TokenService } from '../../services/token.service';
 
 @Component({
-  selector: 'login-component',
+  selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
-  
-  @Input() userStromg: string;
-  @Input() passwordStromg: string;
-  
+
+  isLogged = false;
+  isLoginFail = false;
+  loginUser: LoginUser;
+  user: string;
+  password: string;
+  roles: string[] = [];
+  errMsj: string;
+
   constructor(
-    private formBuilder: FormBuilder
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    console.log("HOLA");
-
-
-    this.loginForm = this.formBuilder.group({
-      user: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
-    });
-  }
-
-  onCheckInputValidation(event) {
-    const numberPattern = new RegExp('^[0-9\~]*$');
-    const input = String.fromCharCode(event.charCode);
-    if (!numberPattern.test(input)) {
-      event.preventDefault();
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+      this.isLoginFail = false;
+      this.roles = this.tokenService.getAuthorities();
     }
   }
 
-  login() {
-    // const values = this.loginForm.value;
-    // return this.loginValueEvent.emit({ dni: values.dni });
+  onLogin(): void {
+    this.loginUser = new LoginUser(this.user, this.password);
+    this.authService.login(this.loginUser).subscribe(
+      data => {
+        this.isLogged = true;
+
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUserName(data.user);
+        this.tokenService.setAuthorities(data.authorities);
+        this.roles = data.authorities;
+        this.router.navigate(['/']);
+      },
+      err => {
+        this.isLogged = false;
+        this.errMsj = err.error.message;
+        console.log(err.error.message);
+      }
+    );
   }
 
-  get user() { return this.loginForm.get('user'); }
-
-  get password() { return this.loginForm.get('password'); }
 }
-
-// export class SearchComponent implements OnInit {
-//   searchForm: FormGroup;
-//   deliveriesList:any = [];
-//   showList: boolean;
-//   @Input() dniStromg: string;
-//   @Output() searchValueEvent = new EventEmitter();
-
-
-
-

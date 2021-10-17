@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss']
 })
