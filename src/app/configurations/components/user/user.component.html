@@ -1,0 +1,74 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Crear Usuario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="userForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item-group mode="md">
+            <ion-item>
+              <ion-label>Nombre</ion-label>
+              <ion-input type="text" formControlName="firstName"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Apellido</ion-label>
+              <ion-input type="text" formControlName="lastName"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Usuario</ion-label>
+              <ion-input type="text" formControlName="user"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Dni</ion-label>
+              <ion-input type="number" formControlName="dni"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Celular</ion-label>
+              <ion-input type="number" formControlName="cellphone"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Email</ion-label>
+              <ion-input type="Email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Sucursal</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar">
+                <ion-select-option *ngFor="let sucursal of sucursales"></ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Rol</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar">
+                <ion-select-option *ngFor="let rol of roles"></ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Area</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar">
+                <ion-select-option *ngFor="let area of areas"></ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Vehículo</ion-label>
+              <ion-select okText="Ok" cancelText="Cancelar">
+                <ion-select-option *ngFor="let vehicle of vehicles"></ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-item-group>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" color="primary" (click)="createUser()">
+      Crear Usuario
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
