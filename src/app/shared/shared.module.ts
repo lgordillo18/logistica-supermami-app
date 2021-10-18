@@ -1,17 +1,20 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
-import { SharedModule } from "../shared/shared.module";
+import { TabsPage } from "./containers/tabs/tabs.page";
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TabsPage
+  ],
+  exports: [],
   imports: [
     CommonModule,
     IonicModule,
     ReactiveFormsModule,
-    SharedModule
+    FormsModule
   ]
 })
 
-export class ReportsModule {}
+export class SharedModule {}
