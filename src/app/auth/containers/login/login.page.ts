@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -7,27 +6,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss']
 })
 export class LoginPage implements OnInit {
+  constructor() { }
 
-  @Input() loginStyle: string = 'normal';
-  @Output() changeTabEvent = new EventEmitter();
-
-  constructor(
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
-  redirect(route) {
-    if (this.loginStyle !== 'normal') {
-      return this.changeTabEvent.emit({ changeTab: 'form' });
-    }
-
-    this.router.navigate([route]);
-  }
-
-  login() {
-    
+  loginEvent(params) {
+    // Aqui debe ir el subscribe para pegarle al post (/login)
+    console.log(params);
   }
 }
 

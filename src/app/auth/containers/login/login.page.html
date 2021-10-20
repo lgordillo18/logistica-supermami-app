@@ -1,2 +1,21 @@
-<login-component></login-component>
-
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">
+      Iniciar Sesión
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="5" size-xl="3" offset-xl="1">
+        <ion-row>
+          <ion-col>
+            <!-- Logo -->
+          </ion-col>
+        </ion-row>
+        <login-component (loginCredentials)="loginEvent($event)"></login-component>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
