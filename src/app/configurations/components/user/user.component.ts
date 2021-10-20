@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   user: string;
   dni: number;
   cellphone: number;
+  
   email: string;
   password: string;
   errMsj: string;
@@ -35,25 +36,25 @@ export class UserComponent implements OnInit {
     }
   }
 
-  createUser(): void {
-    this.newUser = new NewUser(this.firstName, this.lastName, this.user, this.dni, this.cellphone, this.email, this.password);
-    this.userService.setUser(this.newUser).subscribe(
-      data => {
-        console.log('Usuario Creado', 'OK', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+  // createUser(): void {
+  //   this.newUser = new NewUser(this.firstName, this.lastName, this.user, this.dni, this.cellphone, this.email, this.password);
+  //   this.userService.setUser(this.newUser).subscribe(
+  //     data => {
+  //       console.log('Usuario Creado', 'OK', {
+  //         timeOut: 3000, positionClass: 'toast-top-center'
+  //       });
 
-        this.router.navigate(['/tabs']);
-      },
-      err => {
-        this.errMsj = err.error.mensaje;
-        console.error(this.errMsj, 'Fail', {
-          timeOut: 3000,
-        });
-        // console.log(err.error.message);
-      }
-    );
-  }
+  //       this.router.navigate(['/tabs']);
+  //     },
+  //     err => {
+  //       this.errMsj = err.error.mensaje;
+  //       console.error(this.errMsj, 'Fail', {
+  //         timeOut: 3000,
+  //       });
+  //       // console.log(err.error.message);
+  //     }
+  //   );
+  // }
 
 }
 

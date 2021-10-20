@@ -1,33 +1,17 @@
-
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Login - Logistica SuperMaMi
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-content [fullscreen]="true">
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item-group mode="md">
-            <ion-item>
-              <ion-label>Usuario:</ion-label>
-              <ion-input type="text" formControlName="user" [(ngModel)]="user" required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label>Contraseña:</ion-label>
-              <ion-input type="password" formControlName="password" [(ngModel)]="password" required></ion-input>
-            </ion-item>
-            <ion-toolbar>
-              <ion-button type="submit" expand="block" color="primary">
-                Ingresar
-              </ion-button>
-            </ion-toolbar>
-          </ion-item-group>
-        </ion-col> 
-      </ion-row>
-    </ion-grid>
-  </form>
-</ion-content>
+<form [formGroup]="loginForm" (ngSubmit)="login()" routerLink="/tabs/configurations">
+  <ion-item-group mode="md">
+    <ion-item>
+      <ion-label>Usuario:</ion-label>
+      <ion-input type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña:</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+  </ion-item-group>
+  <ion-row class="login-button ion-justify-content-center">
+    <ion-col size="8">
+      <ion-button type="submit" expand="block" color="primary"> Ingresar </ion-button>
+    </ion-col>
+  </ion-row>
+</form>

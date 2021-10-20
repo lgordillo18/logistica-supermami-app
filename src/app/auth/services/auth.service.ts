@@ -11,11 +11,11 @@ export class AuthService {
 
   authURL = '';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
 
   public login(loginUser: LoginUser): Observable<JwtDTO> {
-    return this.httpClient.post<JwtDTO>(this.authURL + 'login', loginUser);
+    return this.http.post<JwtDTO>(this.authURL + 'login', loginUser);
   }
 }
 

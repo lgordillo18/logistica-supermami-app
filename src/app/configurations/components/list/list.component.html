@@ -1,0 +1,16 @@
+<ion-list>
+  <ion-item-sliding *ngFor="let item of arrayList">
+    <item-list-component 
+      [primaryText]="primaryText"
+      [secondaryText]="textConfig.primaryText" 
+      [tertiaryText]="item.rol">
+    </item-list-component>
+    <ion-item-options side="end">
+      <ion-item-option (click)="editAction(item.id)">
+        <ion-icon name="create"></ion-icon></ion-item-option>
+      <ion-item-option color="danger" (click)="removeAction(item.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+</ion-list>
