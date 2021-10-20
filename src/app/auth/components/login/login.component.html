@@ -1,3 +1,4 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
@@ -6,29 +7,27 @@
   </ion-toolbar>
 </ion-header>
 <ion-content [fullscreen]="true">
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <ion-grid>
       <ion-row>
         <ion-col>
           <ion-item-group mode="md">
             <ion-item>
               <ion-label>Usuario:</ion-label>
-              <ion-input type="text" formControlName="user"></ion-input>
+              <ion-input type="text" formControlName="user" [(ngModel)]="user" required></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Contraseña:</ion-label>
-              <ion-input type="password" formControlName="password"></ion-input>
+              <ion-input type="password" formControlName="password" [(ngModel)]="password" required></ion-input>
             </ion-item>
+            <ion-toolbar>
+              <ion-button type="submit" expand="block" color="primary">
+                Ingresar
+              </ion-button>
+            </ion-toolbar>
           </ion-item-group>
-        </ion-col>
+        </ion-col> 
       </ion-row>
     </ion-grid>
   </form>
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <ion-button expand="block" color="primary" (click)="login()">
-      Ingresar
-    </ion-button>
-  </ion-toolbar>
-</ion-footer>
