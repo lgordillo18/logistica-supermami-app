@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VehicleService } from '../../services/vehicles.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -8,23 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class VehicleListPage implements OnInit {
   public vehicleList: any[];
   public textConfig = { primaryText: 'full_name', secondaryText: 'username', tertiaryText: 'rol' };
-  constructor() { }
+  constructor(private vehicleService: VehicleService) { }
 
   ngOnInit() {
     this.vehicleList = [
       {
-        first_name: 'Lucas',
-        last_name: 'Gordillo',
-        full_name: 'Lucas Gordillo',
-        username: 'lgordillo',
-        rol: 'Repartidor'
+        id: 1,
+        patente: 'awd 123',
+        id_marca: 3,
+        id_modelo: 3,
+        anio: '1950',
+        id_estado: 2
       },
       {
-        first_name: "gonzalo",
-        last_name: "miranda",
-        full_name: 'Gonzalo Miranda',
-        username: 'gmiranda',
-        rol: 'Empleado'
+        id: 4,
+        patente: 'ggg 567',
+        id_marca: 2,
+        id_modelo: 1,
+        anio: '2001',
+        id_estado: 2
       }
     ];
   }
