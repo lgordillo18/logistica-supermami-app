@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfigurationsPage } from './containers/configurations/configurations.page';
 import { UsersListPage } from './containers/user-list/user-list.page';
 import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
 import { UsersPage } from './containers/user/user.page';
+import { VehiclePage } from './containers/vehicle/vehicle.page';
 
 const routes: Routes = [
   {
@@ -18,9 +19,14 @@ const routes: Routes = [
     path: 'vehicle-list',
     component: VehicleListPage
   },
-  //   path: 'create-user',
-  //   component: UsersPage
-  // },
+  {
+     path: 'create-user',
+     component: UsersPage
+   },
+   {
+     path: 'create-vehicle',
+     component: VehiclePage
+   },
 ];
 @NgModule({
   imports: [
