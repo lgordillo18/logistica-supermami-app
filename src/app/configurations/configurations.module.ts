@@ -19,7 +19,7 @@ import { UsersPage } from "./containers/user/user.page";
     ListComponent,
     ItemListComponent,
     VehicleListPage,
-    //UsersPage,
+    UsersPage,
     CreateUserComponent
   ],
   imports: [

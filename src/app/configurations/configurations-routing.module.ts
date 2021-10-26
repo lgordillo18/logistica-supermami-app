@@ -18,9 +18,10 @@ const routes: Routes = [
     path: 'vehicle-list',
     component: VehicleListPage
   },
-  //   path: 'create-user',
-  //   component: UsersPage
-  // },
+  {
+    path: 'create-user',
+    component: UsersPage
+  },
 ];
 @NgModule({
   imports: [
