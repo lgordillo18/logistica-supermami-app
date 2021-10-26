@@ -8,13 +8,15 @@ import { ListComponent } from "./components/list/list.component";
 import { ConfigurationsRoutingModule } from "./configurations-routing.module";
 import { ConfigurationsPage } from "./containers/configurations/configurations.page";
 import { UsersListPage } from "./containers/user-list/user-list.page";
+import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     ConfigurationsPage,
     UsersListPage,
     ListComponent,
-    ItemListComponent
+    ItemListComponent,
+    VehicleListPage
   ],
   imports: [
     CommonModule,
@@ -26,4 +28,4 @@ import { UsersListPage } from "./containers/user-list/user-list.page";
   ]
 })
 
-export class ConfigurationsModule {}
+export class ConfigurationsModule { }
