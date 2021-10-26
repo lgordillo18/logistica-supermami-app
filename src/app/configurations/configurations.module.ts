@@ -9,15 +9,17 @@ import { CreateUserComponent } from "./components/user/user.component";
 import { ConfigurationsRoutingModule } from "./configurations-routing.module";
 import { ConfigurationsPage } from "./containers/configurations/configurations.page";
 import { UsersListPage } from "./containers/user-list/user-list.page";
+import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
 import { UsersPage } from "./containers/user/user.page";
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     ConfigurationsPage,
     UsersListPage,
     ListComponent,
     ItemListComponent,
-    UsersPage,
+    VehicleListPage,
+    //UsersPage,
     CreateUserComponent
   ],
   imports: [
@@ -30,4 +32,4 @@ import { UsersPage } from "./containers/user/user.page";
   ]
 })
 
-export class ConfigurationsModule {}
+export class ConfigurationsModule { }

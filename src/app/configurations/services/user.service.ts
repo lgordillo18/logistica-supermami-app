@@ -12,12 +12,12 @@ export class UserService {
     private http: HttpClient) {
   }
 
-  setUser(newUser: NewUser): Observable<any>{
+  setUser(newUser: NewUser): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/user`, {});
   }
 
-  // Example
+
   getUsers(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/users`, { });
+    return this.http.get<any>(`${environment.apiUrl}/users`, {});
   }
 }
