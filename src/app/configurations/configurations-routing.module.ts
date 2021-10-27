@@ -20,13 +20,13 @@ const routes: Routes = [
     component: VehicleListPage
   },
   {
-     path: 'create-user',
-     component: UsersPage
-   },
-   {
-     path: 'create-vehicle',
-     component: VehiclePage
-   },
+    path: 'create-user',
+    component: UsersPage
+  },
+  {
+    path: 'create-vehicle',
+    component: VehiclePage
+  }
 ];
 @NgModule({
   imports: [

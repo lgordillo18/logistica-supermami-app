@@ -21,6 +21,7 @@ import { CreateVehicleComponent } from "./components/vehicle/vehicle.component";
     VehiclePage,
     UsersListPage,
     VehicleListPage,
+    UsersPage,
     CreateUserComponent,
     CreateVehicleComponent,
     ListComponent,
