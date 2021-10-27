@@ -3,14 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center"> Crear Usuario </ion-title>
+    <ion-title class="ion-text-center"> Crear Vehículo </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
   <ion-row>
     <ion-col>
-      <user-component [arrayList]="officeList" [arrayList1]="rolList" [arrayList2]="areaList" [arrayList3]="vehicleList"
-        (newUser)="userEvent($event)"></user-component>
+      <vehicle-component [arrayList]="brandList" [arrayList1]="statusList" (newVehicle)="vehicleEvent($event)">
+      </vehicle-component>
     </ion-col>
   </ion-row>
 </ion-content>

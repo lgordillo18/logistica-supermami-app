@@ -11,16 +11,21 @@ import { ConfigurationsPage } from "./containers/configurations/configurations.p
 import { UsersListPage } from "./containers/user-list/user-list.page";
 import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
 import { UsersPage } from "./containers/user/user.page";
+import { VehiclePage } from "./containers/vehicle/vehicle.page";
+import { CreateVehicleComponent } from "./components/vehicle/vehicle.component";
 
 @NgModule({
   declarations: [
     ConfigurationsPage,
+    UsersPage,
+    VehiclePage,
     UsersListPage,
-    ListComponent,
-    ItemListComponent,
     VehicleListPage,
     UsersPage,
-    CreateUserComponent
+    CreateUserComponent,
+    CreateVehicleComponent,
+    ListComponent,
+    ItemListComponent
   ],
   imports: [
     CommonModule,
