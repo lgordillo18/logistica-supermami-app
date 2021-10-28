@@ -10,15 +10,21 @@ import { UserComponent } from "./components/user/user.component";
 import { ConfigurationsRoutingModule } from "./configurations-routing.module";
 import { ConfigurationsPage } from "./containers/configurations/configurations.page";
 import { UsersListPage } from "./containers/user-list/user-list.page";
+import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
+import { VehiclePage } from "./containers/vehicle/vehicle.page";
+import { CreateVehicleComponent } from "./components/vehicle/vehicle.component";
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     ConfigurationsPage,
+    VehiclePage,
     UsersListPage,
     ListComponent,
-    ItemListComponent,
     UserComponent,
-    ItemSkeletonComponent
+    ItemSkeletonComponent,
+    VehicleListPage,
+    CreateVehicleComponent,
+    ItemListComponent
   ],
   imports: [
     CommonModule,
@@ -30,4 +36,4 @@ import { UsersListPage } from "./containers/user-list/user-list.page";
   ]
 })
 
-export class ConfigurationsModule {}
+export class ConfigurationsModule { }

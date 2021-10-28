@@ -21,7 +21,7 @@ export class UserService {
   }
 
   getUsers(): Observable<any> {
-    return this.http.get<any>(`${environment.apiUrl}/users`, { });
+    return this.http.get<any>(`${environment.apiUrl}/users`, {});
   }
 
   getRoles(): Observable<any> {
