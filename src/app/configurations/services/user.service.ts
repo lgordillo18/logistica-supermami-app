@@ -12,12 +12,27 @@ export class UserService {
     private http: HttpClient) {
   }
 
-  setUser(newUser: NewUser): Observable<any>{
-    return this.http.post<any>(`${environment.apiUrl}/user`, {});
+  newUser(newUser: NewUser): Observable<any>{
+    return this.http.post<any>(`${environment.apiUrl}/user`, newUser);
   }
 
-  // Example
+  getUser(userId): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/user/${userId}`, {});
+  }
+
   getUsers(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/users`, { });
+  }
+
+  getRoles(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/user/roles`, { });
+  }
+
+  getAreas(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/areas`, { });
+  }
+
+  deleteUser(userId): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/user/delete/${userId}`, { id: userId, deleted: true });
   }
 }
