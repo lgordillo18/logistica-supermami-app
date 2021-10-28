@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ListArray } from '../../models/list-array.interface';
 
 @Component({
   selector: 'list-component',
@@ -6,15 +7,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() arrayList: any[];
-  @Input() textConfig: any;
+  @Input() loading: boolean = true;
+  @Input() arrayList: ListArray[] = [];
   @Output() editEvent = new EventEmitter<any>();
   @Output() removeEvent = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
-    // this.textConfig = {}
   }
 
   editAction(itemId) {
@@ -23,9 +23,5 @@ export class ListComponent implements OnInit {
 
   removeAction(itemId) {
     this.removeEvent.emit(itemId);
-  }
-
-  get primaryText() {
-    return `item.${this.textConfig.primaryText}`;
   }
 }
