@@ -4,6 +4,7 @@ import { ConfigurationsPage } from './containers/configurations/configurations.p
 import { UsersListPage } from './containers/user-list/user-list.page';
 import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
 import { VehiclePage } from './containers/vehicle/vehicle.page';
+import { OfficeListPage } from './containers/office-list/office-list.page';
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
   {
     path: 'vehicle-list',
     component: VehicleListPage
+  },
+  {
+    path: 'office-list',
+    component: OfficeListPage
+  },
+  {
+    path: 'create-user',
+    component: UsersPage
   },
   {
     path: 'create-vehicle',
