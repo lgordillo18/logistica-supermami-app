@@ -1,16 +1,17 @@
-import { Component } from "@angular/core";
-
+import { AfterViewInit, Component, Input, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { ModalController } from "@ionic/angular";
+import { LoadingHelper } from "src/app/shared/helpers/loading.helper";
+import { OfficeService } from "../../services/office.service";
 
 @Component({
     selector: 'office-component',
     templateUrl: './office.component.html',
     styleUrls: ['/office.component.scss'],
-
 })
 
-export class officeComponent implements OnInit, AfterViewInit {
-    @Imput() officeData: any;
-
+export class OfficeComponent implements OnInit, AfterViewInit {
+    @Input() officeData: any;
 
     public officeForm: FormGroup = new FormGroup({
         id: new FormControl(''),
@@ -18,7 +19,6 @@ export class officeComponent implements OnInit, AfterViewInit {
     });
 
     constructor(
-        private officeService: OfficeService,
         private loadingHelper: LoadingHelper,
         private modalController: ModalController
     ) { }
@@ -39,9 +39,18 @@ export class officeComponent implements OnInit, AfterViewInit {
     createOffice(){
         this.dismiss('new', this.officeForm.value);
     }
-
-    private dismiss(action, response = null){
-        this.modalController.dismiss({ action = action, response})
+    
+    editOffice() {
+    this.dismiss('edit', this.officeForm.value);
     }
+
+    cancel() {
+    this.dismiss('');
+    }
+
+    private dismiss(action, response = null) {
+    this.modalController.dismiss({ action: action, response });
+    }
+
 
 }

@@ -13,6 +13,7 @@ import { UsersListPage } from "./containers/user-list/user-list.page";
 import { VehiclesListPage } from './containers/vehicle-list/vehicle-list.page';
 import { OfficeListPage } from "./containers/office-list/office-list.page";
 import { VehicleComponent } from "./components/vehicle/vehicle.component";
+import { OfficeComponent } from "./components/office/office.component";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { VehicleComponent } from "./components/vehicle/vehicle.component";
     VehiclesListPage,
     VehicleComponent,
     OfficeListPage,
+    OfficeComponent,
     ItemListComponent
   ],
   imports: [
