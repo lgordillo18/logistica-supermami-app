@@ -1,6 +1,7 @@
 export class NewOffice{
     officeName: string;
-    constructor(officeName: string){
-        this.officeName = officeName;
+
+    constructor( office ){
+        this.officeName = office.officeName;
     }
 }
