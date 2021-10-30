@@ -6,7 +6,7 @@
         <ion-title class="ion-text-center"> Listado de Vehiculos </ion-title>
     </ion-toolbar>
 </ion-header>
-<ion-fab vertical="bottom" horizontal="end" routerLink="/tabs/configurations/create-vehicle">
+<ion-fab vertical="bottom" horizontal="end" (click)="openVehicleFormModal()">
     <ion-fab-button size="small" type="submit" translucent>
         <ion-icon name="add"></ion-icon>
     </ion-fab-button>
@@ -14,8 +14,7 @@
 <ion-content fullscreen>
     <ion-row>
         <ion-col>
-            <list-component [arrayList]="vehicleList" [textConfig]="textConfig" (editEvent)="editVehicle($event)"
-                (removeEvent)="removeVehicle($event)">
+            <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editVehicle($event)" (removeEvent)="showDeleteAlert($event)">
             </list-component>
         </ion-col>
     </ion-row>
