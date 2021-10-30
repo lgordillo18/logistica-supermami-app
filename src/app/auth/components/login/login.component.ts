@@ -1,28 +1,56 @@
-
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Credentials } from '../../models/credentials.interface';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'login-component',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent implements OnInit {
-  public loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
-  });
-
-  @Output() loginCredentials = new EventEmitter<Credentials>();
+  loginForm: FormGroup;
   
-  constructor() { }
+  @Input() userStromg: string;
+  @Input() passwordStromg: string;
+  
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("HOLA");
+
+
+    this.loginForm = this.formBuilder.group({
+      user: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required])
+    });
+  }
+
+  onCheckInputValidation(event) {
+    const numberPattern = new RegExp('^[0-9\~]*$');
+    const input = String.fromCharCode(event.charCode);
+    if (!numberPattern.test(input)) {
+      event.preventDefault();
+    }
+  }
 
   login() {
-    const values = this.loginForm.value;
-    this.loginCredentials.emit(values);
+    // const values = this.loginForm.value;
+    // return this.loginValueEvent.emit({ dni: values.dni });
   }
+
+  get user() { return this.loginForm.get('user'); }
+
+  get password() { return this.loginForm.get('password'); }
 }
+
+// export class SearchComponent implements OnInit {
+//   searchForm: FormGroup;
+//   deliveriesList:any = [];
+//   showList: boolean;
+//   @Input() dniStromg: string;
+//   @Output() searchValueEvent = new EventEmitter();
+
+
+
+
