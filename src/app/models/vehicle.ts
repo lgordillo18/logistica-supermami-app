@@ -1,17 +1,21 @@
 export class NewVehicle {
-    id: number;
-    patente: string;
-    id_marca: string;
-    id_modelo: string;
-    anio: Date;
-    id_estado: number;
+    patent: string;
+    vehicleBrand: string;
+    vehicleModel: string;
+    kg: number;
+    year: number;
+    vehicleStatus: {};
+    employee: {};
 
-    constructor(id: number, patente: string, id_marca: string, id_modelo: string, anio: Date, id_estado: number) {
-        this.id = id;
-        this.patente = patente;
-        this.id_marca = id_marca;
-        this.id_modelo = id_modelo;
-        this.anio = anio;
-        this.id_estado = id_estado;
+    constructor( vehicle ) {
+        this.patent = vehicle.patent;
+        this.vehicleBrand = vehicle.vehicleBrand;
+        this.vehicleModel = vehicle.vehicleModel;
+        this.kg = vehicle.kg;
+        this.year = vehicle.year;
+        this.vehicleStatus = { id: vehicle.status };
+        this.employee = { id: vehicle.employees};
     }
 }
+      
+  
