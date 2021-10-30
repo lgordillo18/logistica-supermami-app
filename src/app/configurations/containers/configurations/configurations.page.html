@@ -1,0 +1,34 @@
+<ion-router-outlet>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button></ion-back-button>
+            </ion-buttons>
+            <ion-title> Configuraciones </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-row>
+            <ion-col>
+                <ion-list lines="full">
+                    <ion-item button="true" type="button" detail="false" routerLink="/tabs/configurations/user-list">
+                        Usuarios
+                        <span slot="end"><ion-icon name="people-outline"></ion-icon></span>
+                    </ion-item>
+                    <ion-item button="true" type="button" detail="false" routerLink="/tabs/configurations/office-list">
+                        Sucursales
+                        <span slot="end"><ion-icon name="storefront-outline"></ion-icon></span>
+                    </ion-item>
+                    <ion-item button="true" type="button" detail="false" routerLink="/tabs/configurations/vehicle-list">
+                        Vehiculos
+                        <span slot="end"><ion-icon name="car-outline"></ion-icon></span>
+                    </ion-item>
+                    <ion-item button="true" type="button" detail="false" routerLink="/logout">
+                        Cerrar sesión
+                        <span slot="end"><ion-icon name="log-out-outline"></ion-icon></span>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-content>
+</ion-router-outlet>
