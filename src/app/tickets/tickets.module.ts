@@ -7,12 +7,14 @@ import { TicketsPage } from "./containers/tickets/tickets.page";
 import { TicketListComponent } from "./components/ticket-list/ticket-list.component";
 import { TicketsRoutingModule } from "./tickets-routing.module";
 import { TicketComponent } from "./components/ticket/ticket.component";
+import { FiltersComponent } from '../shared/components/filters/filters.component';
 
 @NgModule({
   declarations: [
     TicketListComponent,
     TicketsPage,
-    TicketComponent
+    TicketComponent,
+    FiltersComponent
   ],
   imports: [
     CommonModule,
@@ -23,4 +25,4 @@ import { TicketComponent } from "./components/ticket/ticket.component";
   ]
 })
 
-export class TicketsModule {}
+export class TicketsModule { }
