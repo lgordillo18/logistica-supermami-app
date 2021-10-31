@@ -1,0 +1,40 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tickets"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> Nuevo pedido </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="light-gray-background">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <select-offices-component [allOffices]="offices" (selectEvent)="officeSelectEvent($event)"></select-offices-component>
+        <div class="validation-error" *ngIf="isSubmitted && !officeIdSelected">
+          Sucursal de destino es requerida.
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h5 class="ion-padding"> Productos seleccionados: </h5>
+        <product-list-component [selectedProducts]="selectedProducts" [withRemoveButton]="false" [totalProducts]="total"></product-list-component>
+        <div class="validation-error" *ngIf="isSubmitted && selectedProducts.length == 0">
+          Debe seleccionar al menos un producto.
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-center">
+      <ion-col>
+        <label> Agregar Productos </label>
+        <ion-icon class="add-products-button" color="primary" name="add-circle-outline" (click)="openProductsModal()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border ion-hide-md-up">
+  <ion-toolbar class="ion-no-padding">
+    <ion-button expand="block" color="primary" (click)="prepareOrder()"> Crear Pedido </ion-button>
+  </ion-toolbar>
+</ion-footer>

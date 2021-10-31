@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 
 @Component({
@@ -14,9 +16,17 @@ export class TicketsPage implements OnInit {
 
   public textConfig = { primaryText: 'empleado', secondaryText: 'estado' };
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private toastController: ToastController
+  ) { }
 
   ngOnInit() {
+    const params = this.route.snapshot.params;
+
+    if (params.message === 'success') {
+      this.showSuccessToast();
+    }
 
     this.pendingTickets = [
       {
@@ -39,6 +49,18 @@ export class TicketsPage implements OnInit {
         estado: 'rechazado'
       }
     ];
+  }
+
+  private async showSuccessToast() {
+    const message = "Ticket de pedido creado con exito!";
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000,
+      position: 'top',
+      mode: 'ios',
+      color: 'dark'
+    });
+    await toast.present(); 
   }
 
   getTicketsPendientes() {

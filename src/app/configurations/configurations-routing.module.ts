@@ -24,10 +24,6 @@ const routes: Routes = [
     component: OfficeListPage
   },
   {
-    path: 'create-user',
-    component: UsersPage
-  },
-  {
     path: 'create-vehicle',
     component: VehiclePage
   }

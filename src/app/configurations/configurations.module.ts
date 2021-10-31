@@ -25,8 +25,6 @@ import { OfficeListPage } from "./containers/office-list/office-list.page";
     ItemSkeletonComponent,
     VehicleListPage,
     OfficeListPage,
-    UsersPage,
-    CreateUserComponent,
     CreateVehicleComponent,
     ItemListComponent
   ],
