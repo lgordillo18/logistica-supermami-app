@@ -11,6 +11,8 @@ export class TicketsPage implements OnInit {
   public approvedTickets: any[];
   public rejectedTickets: any[];
   public currentSegment: string = 'pending';
+  public show: boolean = true;
+  showMainContent: Boolean = true;
 
   public textConfig = { primaryText: 'empleado', secondaryText: 'estado' };
 

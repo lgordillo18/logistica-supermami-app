@@ -7,6 +7,7 @@ import { TicketsPage } from "./containers/tickets/tickets.page";
 import { TicketListComponent } from "./components/ticket-list/ticket-list.component";
 import { TicketsRoutingModule } from "./tickets-routing.module";
 import { TicketComponent } from "./components/ticket/ticket.component";
+import { FiltersComponent } from '../shared/components/filters/filters.component';
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
 import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.component";
 
@@ -16,7 +17,9 @@ import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.
     TicketsPage,
     TicketComponent,
     TicketCardComponent,
-    TicketRejectComponent
+    TicketRejectComponent,
+    FiltersComponent,
+    TicketCardComponent
   ],
   imports: [
     CommonModule,
@@ -27,4 +30,4 @@ import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.
   ]
 })
 
-export class TicketsModule {}
+export class TicketsModule { }
