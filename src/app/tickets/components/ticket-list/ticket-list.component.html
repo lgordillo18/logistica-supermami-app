@@ -1,14 +1,10 @@
-<!-- <ion-list>
-  <ion-item *ngFor="let item of arrayList">
-    <ticket
-      [primaryText]="item.empleado"
-      [secondaryText]="item.estado">
-    </ticket>
-  </ion-item>
-</ion-list> -->
-<ticket-details
-[primaryText]="hola"
-[secondaryText]="hola"
-[tertiaryText]="hola">
-</ticket-details>
-
+<ion-row>
+    <ion-col size="12">
+        <ion-list>
+            <ion-item *ngFor="let item of arrayList">
+                <ticket-card [primaryText]="item.id" [secondaryText]="item.sucursal" [tertiaryText]="item.fecha">
+                </ticket-card>
+            </ion-item>
+        </ion-list>
+    </ion-col>
+</ion-row>

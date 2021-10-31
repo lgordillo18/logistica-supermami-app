@@ -9,6 +9,8 @@ import { TicketsRoutingModule } from "./tickets-routing.module";
 import { TicketComponent } from "./components/ticket/ticket.component";
 import { TicketDetailsComponent } from "./components/ticket-details/ticket-details.component";
 import { TicketDetailsPage } from "./containers/ticket-details/ticket-details.page";
+import { FiltersComponent } from '../shared/components/filters/filters.component';
+import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { TicketDetailsPage } from "./containers/ticket-details/ticket-details.pa
     TicketComponent,
     TicketDetailsPage,
     TicketDetailsComponent
+    FiltersComponent,
+    TicketCardComponent
   ],
   imports: [
     CommonModule,
@@ -27,4 +31,4 @@ import { TicketDetailsPage } from "./containers/ticket-details/ticket-details.pa
   ]
 })
 
-export class TicketsModule {}
+export class TicketsModule { }

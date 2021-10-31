@@ -8,7 +8,8 @@ import { CapitalizePipe } from "./pipes/capital-letter/capital-letter.pipe";
 @NgModule({
   declarations: [
     TabsPage,
-    CapitalizePipe
+    CapitalizePipe,
+
   ],
   exports: [
     CapitalizePipe
@@ -24,4 +25,4 @@ import { CapitalizePipe } from "./pipes/capital-letter/capital-letter.pipe";
   ]
 })
 
-export class SharedModule {}
+export class SharedModule { }
