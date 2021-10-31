@@ -8,13 +8,15 @@ import { TicketListComponent } from "./components/ticket-list/ticket-list.compon
 import { TicketsRoutingModule } from "./tickets-routing.module";
 import { TicketComponent } from "./components/ticket/ticket.component";
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
+import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.component";
 
 @NgModule({
   declarations: [
     TicketListComponent,
     TicketsPage,
     TicketComponent,
-    TicketCardComponent
+    TicketCardComponent,
+    TicketRejectComponent
   ],
   imports: [
     CommonModule,
