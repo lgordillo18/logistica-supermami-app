@@ -6,8 +6,7 @@ import { OfficeService } from "../../services/office.service";
 
 @Component({
     selector: 'office-component',
-    templateUrl: './office.component.html',
-    styleUrls: ['/office.component.scss'],
+    templateUrl: './office.component.html'
 })
 
 export class OfficeComponent implements OnInit, AfterViewInit {
@@ -28,28 +27,28 @@ export class OfficeComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         if (this.officeData) {
             if (this.officeData.id) {
-              this.officeForm.get('id').setValue(this.officeData.id);
+                this.officeForm.get('id').setValue(this.officeData.id);
             }
             if (this.officeData.name) {
-              this.officeForm.get('name').setValue(this.officeData.name);
+                this.officeForm.get('name').setValue(this.officeData.name);
             }
         }
     }
 
-    createOffice(){
+    createOffice() {
         this.dismiss('new', this.officeForm.value);
     }
-    
+
     editOffice() {
-    this.dismiss('edit', this.officeForm.value);
+        this.dismiss('edit', this.officeForm.value);
     }
 
     cancel() {
-    this.dismiss('');
+        this.dismiss('');
     }
 
     private dismiss(action, response = null) {
-    this.modalController.dismiss({ action: action, response });
+        this.modalController.dismiss({ action: action, response });
     }
 
 
