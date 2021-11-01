@@ -1,0 +1,29 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="cancel()" color="primary"> Cancelar </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> Crear Sucursal </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="officeForm">
+        <ion-item-group mode="md">
+          <ion-item>
+            <ion-label position="floating">Nombre:</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+        </ion-item-group>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer class="ion-no-border ion-hide-md-up">
+  <ion-toolbar class="ion-no-padding">
+    <ion-button *ngIf="!officeData" expand="block" color="primary" (click)="createOffice()"> Crear Sucursal
+    </ion-button>
+    <ion-button *ngIf="officeData" expand="block" color="primary" (click)="editOffice()"> Guardar </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title class="ion-text-center">
       Iniciar Sesión
     </ion-title>
@@ -11,7 +11,9 @@
       <ion-col size="12" size-md="6" size-lg="5" size-xl="3" offset-xl="1">
         <ion-row>
           <ion-col>
-            <!-- Logo -->
+            <div class="ion-text-center">
+              <img width="400" height="400" src="/assets/img/Login.png" />
+            </div>
           </ion-col>
         </ion-row>
         <login-component (loginCredentials)="loginEvent($event)"></login-component>

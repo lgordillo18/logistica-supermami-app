@@ -1,0 +1,15 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>
+      <ion-icon name="calendar-outline"></ion-icon> Fecha: {{ ticketItem.date }}
+    </ion-card-subtitle>
+    <ion-card-title class="ion-margin-top"><span class="office-name">Sucursal: {{ ticketItem.office | capitalize }}
+      </span></ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-icon name="cube-outline"></ion-icon> Nº Pedido: #{{ ticketItem.ticket_number }}
+  </ion-card-content>
+  <ion-footer color="danger">
+    <ion-button class="detail-button" expand="full">Ver Detalles</ion-button>
+  </ion-footer>
+</ion-card>
