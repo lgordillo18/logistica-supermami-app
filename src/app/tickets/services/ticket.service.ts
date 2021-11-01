@@ -7,7 +7,7 @@ import { OrderTicket } from '../models/order-ticket.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TicketsService {
+export class TicketService {
   constructor(
     private http: HttpClient) {
   }
@@ -18,5 +18,11 @@ export class TicketsService {
 
   createNewOrder(newOrder: OrderTicket): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/order-ticket`, newOrder);
-  } 
+  }
+
+  getAllEmployeeTickets(employeeId) {
+    // params
+
+    return this.http.get<any>(`${environment.apiUrl}/order-tickets-by-employee/${employeeId}`, {});
+  }
 }

@@ -3,12 +3,13 @@
     <ion-toolbar>
       <ion-title class="ion-text-center"> Listado de Pedidos </ion-title>
       <ion-buttons slot="end">
-        <ion-icon class="add-button" color="primary" name="add-circle-outline" routerLink="/tickets/new-ticket"></ion-icon>
+        <ion-icon class="add-button" color="primary" name="add-circle-outline" routerLink="/tickets/new-ticket">
+        </ion-icon>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
   <ion-content class="light-gray-background">
-    <ion-button expand="full" fill="outline" (click)="showMainContent=!showMainContent">Filtrar</ion-button>
+    <ion-button expand="full" fill="outline" (click)="showMainContent=!showMainContent"><ion-icon name="funnel-outline"></ion-icon>Filtrar</ion-button>
     <div class="filters" *ngIf="!showMainContent">
       <filters placeHolder1="Sucursal" placeHolder2="Estado" placeHolder3="N° pedido" placeHolder4="Fecha"></filters>
     </div>
@@ -27,22 +28,11 @@
         </ion-segment>
       </ion-col>
     </ion-row>
-    
-     <ticket-list
-     *ngIf="currentSegment === 'pending'"
-     [arrayList]="pendingTickets" [textConfig]="textConfig">
-     </ticket-list>
- 
-    <ticket-list
-      *ngIf="currentSegment === 'approval'"
-      [arrayList]="approvedTickets" [textConfig]="textConfig">
+    <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="pendingTickets">
     </ticket-list>
- 
-   <ticket-list
-     *ngIf="currentSegment === 'rejected'"
-     [arrayList]="rejectedTickets" [textConfig]="textConfig">
-   </ticket-list> 
-  </ion-content>   
+    <ticket-list *ngIf="currentSegment === 'approval'" [arrayList]="approvedTickets">
+    </ticket-list>
+    <ticket-list *ngIf="currentSegment === 'rejected'" [arrayList]="rejectedTickets">
+    </ticket-list>
+  </ion-content>
 </ion-router-outlet>
-
-  

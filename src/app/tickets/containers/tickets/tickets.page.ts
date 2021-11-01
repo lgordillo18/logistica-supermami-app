@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-
+import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'tickets-page',
@@ -12,50 +13,41 @@ export class TicketsPage implements OnInit {
   public pendingTickets: any[];
   public approvedTickets: any[];
   public rejectedTickets: any[];
+  public deliveredTickets: any[];
+  public cancelledTickets: any[];
   public currentSegment: string = 'pending';
   public show: boolean = true;
   showMainContent: Boolean = true;
+  private employeeId = null;
 
   public textConfig = { primaryText: 'empleado', secondaryText: 'estado' };
 
   constructor(
     private route: ActivatedRoute,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private ticketService: TicketService,
+    private loadingHelper: LoadingHelper
   ) { }
 
   ngOnInit() {
+    this.loadingHelper.present();
+    this.employeeId = localStorage.getItem('current_employee_id');
     const params = this.route.snapshot.params;
+    if (params.message === 'success') { this.showSuccessToast(); }
+    this.getAllTickets();
+  }
 
-    if (params.message === 'success') {
-      this.showSuccessToast();
-    }
-
-    this.pendingTickets = [
-      {
-        id: 17,
-        sucursal: "San Vicente",
-        fecha: '28-10-2021'
-      },
-      {
-        id: 18,
-        sucursal: "General Paz",
-        fecha: '28-10-2021'
+  private async getAllTickets() {
+    this.ticketService.getAllEmployeeTickets(this.employeeId).subscribe(async (response) => {
+      if (response) {
+        this.pendingTickets = response.pendingTickets ? response.pendingTickets : [];
+        this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
+        this.rejectedTickets = response.rejectedTickets ? response.rejectedTickets : [];
+        this.deliveredTickets = response.deliveredTickets ? response.deliveredTickets : [];
+        this.cancelledTickets = response.cancelledTickets ? response.cancelledTickets : [];
       }
-    ];
-    this.approvedTickets = [
-      {
-        id: 109,
-        sucursal: "Rodriguez del Busto",
-        fecha: '29-10-2021'
-      }
-    ];
-    this.rejectedTickets = [
-      {
-        id: 47,
-        sucursal: "Salsipuedes",
-        fecha: '30-10-2021'
-      }
-    ];
+      this.loadingHelper.dismiss();
+    });
   }
 
   private async showSuccessToast() {
@@ -68,18 +60,6 @@ export class TicketsPage implements OnInit {
       color: 'dark'
     });
     await toast.present(); 
-  }
-
-  getTicketsPendientes() {
-    //endpoint
-  }
-
-  getApprovedTickets() {
-    //endpoint
-  }
-
-  getTicketsRejected() {
-    //endpoint
   }
 
   segmentChanged(event) {
