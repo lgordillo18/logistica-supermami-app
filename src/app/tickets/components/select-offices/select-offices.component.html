@@ -1,0 +1,11 @@
+<form [formGroup]="officeForm">
+  <ion-item-group mode="md">
+    <ion-item>
+      <ion-label>Sucursal de Destino:</ion-label>
+      <ion-select placeholder="Seleccione" okText="Ok" cancelText="Cancelar" formControlName="office" (ionChange)="onSelectEvent($event)">
+        <ion-select-option *ngFor="let item of allOffices" value="{{ item.id }}">{{ item.name |
+          capitalize }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-item-group>
+</form>
