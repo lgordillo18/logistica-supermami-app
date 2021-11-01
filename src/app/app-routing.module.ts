@@ -39,6 +39,15 @@ const routes: Routes = [
       ]
     },
   ]},
+  {
+    path: 'tickets',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./tickets/tickets.module').then(m => m.TicketsModule)
+      }
+    ]
+  },
   { path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 @NgModule({

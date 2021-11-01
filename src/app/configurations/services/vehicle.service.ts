@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { NewVehicle } from 'src/app/models/vehicle';
+import { NewVehicle } from 'src/app/configurations/models/vehicle';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,7 +14,6 @@ export class VehicleService {
 
   newVehicle(newVehicle: NewVehicle): Observable<any>{
     return this.http.post<any>(`${environment.apiUrl}/vehicle`, newVehicle);
-    console.log(newVehicle);
   }
 
   getVehicle(vehicleId): Observable<any> {

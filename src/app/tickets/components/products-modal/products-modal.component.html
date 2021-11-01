@@ -1,0 +1,40 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title class="ion-text-center"> Agregar Productos </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" color="primary"> Cancelar </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="light-gray-background">
+  <ion-row class="ion-no-padding">
+    <ion-col>
+      <ion-searchbar (click)="openSearchProducts()" placeholder="Buscar productos"></ion-searchbar>
+      <ion-item [hidden]="true">
+        <ionic-selectable
+          #productComponent
+          placeholder="Productos"
+          searchPlaceholder="Ingrese nombre del producto"
+          [items]="allProducts"
+          itemValueField="id"
+          itemTextField="name"
+          [canSearch]="true"
+          [isMultiple]="true"
+          (onChange)="productChange($event)">
+        </ionic-selectable>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-grid class="ion-no-padding">
+    <ion-row *ngIf="selectedProducts.length > 0">
+      <ion-col size="12">
+        <product-list-component [selectedProducts]="selectedProducts" (removeProductEvent)="removeProduct($event)" (changeQuantityEvent)="changeQuantity($event)"></product-list-component>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer class="ion-no-border ion-hide-md-up">
+  <ion-toolbar class="ion-no-padding">
+    <ion-button *ngIf="selectedProducts.length > 0" expand="block" color="primary" (click)="confirmProducts()"> Confirmar Productos </ion-button>
+  </ion-toolbar>
+</ion-footer>
