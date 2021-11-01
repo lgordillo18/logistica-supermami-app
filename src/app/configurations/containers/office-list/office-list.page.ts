@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AlertController, LoadingController, ModalController } from "@ionic/angular";
-import { NewOffice } from "src/app/models/office";
+import { NewOffice } from "src/app/configurations/models/office";
 import { OfficeComponent } from "../../components/office/office.component";
 import { ListArray } from "../../models/list-array.interface";
 import { OfficeService } from "../../services/office.service";

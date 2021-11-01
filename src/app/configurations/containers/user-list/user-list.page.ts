@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
-import { NewUser } from 'src/app/models/user';
 import { UserComponent } from '../../components/user/user.component';
 import { ListArray } from '../../models/list-array.interface';
+import { NewUser } from '../../models/user';
 import { UserService } from '../../services/user.service';
 
 @Component({

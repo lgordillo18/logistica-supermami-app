@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, LoadingController, ModalController } from '@ionic/angular';
-import { NewVehicle } from 'src/app/models/vehicle';
+import { NewVehicle } from 'src/app/configurations/models/vehicle';
 import { VehicleComponent } from '../../components/vehicle/vehicle.component';
 import { ListArray } from '../../models/list-array.interface';
 import { VehicleService } from '../../services/vehicle.service';

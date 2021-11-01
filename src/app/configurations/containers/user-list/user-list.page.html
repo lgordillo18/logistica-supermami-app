@@ -1,21 +1,21 @@
 <ion-header translucent>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title class="ion-text-center"> Listado de Usuarios </ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center"> Listado de Usuarios </ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-fab vertical="bottom" horizontal="end" (click)="openUserFormModal()">
-  <ion-fab-button size="small" type="submit" translucent>
-    <ion-icon name="add"></ion-icon>
-  </ion-fab-button>
+    <ion-fab-button size="small" type="submit" translucent>
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
 </ion-fab>
 <ion-content fullscreen>
-  <ion-row>
-    <ion-col>
-      <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editUser($event)" (removeEvent)="showDeleteAlert($event)">
-      </list-component>
-    </ion-col>
-  </ion-row>
+    <ion-row>
+        <ion-col>
+            <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editUser($event)" (removeEvent)="showDeleteAlert($event)">
+            </list-component>
+        </ion-col>
+    </ion-row>
 </ion-content>
