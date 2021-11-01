@@ -6,12 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./ticket-card.component.scss']
 })
 export class TicketCardComponent implements OnInit {
-  @Input() primaryText: string;
-  @Input() secondaryText: string;
-  @Input() tertiaryText: string;
+  @Input() ticketItem: any;
 
   constructor() { }
 
   ngOnInit() {
+    
   }
 }

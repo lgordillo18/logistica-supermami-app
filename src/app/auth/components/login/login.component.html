@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" routerLink="/tabs/configurations">
+<form [formGroup]="loginForm">
   <ion-item-group mode="md">
     <ion-item>
       <ion-label>Usuario:</ion-label>
@@ -10,3 +10,10 @@
     </ion-item>
   </ion-item-group>
 </form>
+<ion-footer>
+  <ion-row class="ion-justify-content-center ion-padding-top">
+    <ion-col size="12">
+      <ion-button style="box-sizing: border-box;" type="submit" expand="block" color="primary" (click)="login()"> Ingresar </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

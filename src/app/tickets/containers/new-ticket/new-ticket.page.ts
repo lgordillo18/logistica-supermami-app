@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OfficeService } from 'src/app/configurations/services/office.service';
 import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
-import { TicketsService } from '../../services/tickets.service';
+import { TicketService } from '../../services/ticket.service';
 import { take } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { AlertController, ModalController } from '@ionic/angular';
@@ -24,7 +24,7 @@ export class NewTicketPage implements OnInit {
 
   constructor(
     private officeService: OfficeService,
-    private ticketsService: TicketsService,
+    private ticketService: TicketService,
     private loadingHelper: LoadingHelper,
     private modalController: ModalController,
     private alertController: AlertController,
@@ -33,7 +33,7 @@ export class NewTicketPage implements OnInit {
 
   ngOnInit() {
     this.loadingHelper.present();
-    combineLatest(this.officeService.getOffices(), this.ticketsService.getProducts()).pipe(take(1)).subscribe(async ([offices, products]) => {
+    combineLatest(this.officeService.getOffices(), this.ticketService.getProducts()).pipe(take(1)).subscribe(async ([offices, products]) => {
       this.offices = offices ? offices : [];
       this.products = products ? products : [];
       this.loadingHelper.dismiss();
@@ -90,8 +90,12 @@ export class NewTicketPage implements OnInit {
   }
 
   async createOrder(newOrder) {
-    this.ticketsService.createNewOrder(new OrderTicket(newOrder)).subscribe(async (response) => {
-      this.router.navigate(['/tabs/tickets', { message: 'success' }]);
+    this.loadingHelper.present();
+    this.ticketService.createNewOrder(new OrderTicket(newOrder)).subscribe(async (response) => {
+      if (response) {
+        this.loadingHelper.dismiss();
+        this.router.navigate(['/tabs/tickets', { message: 'success' }]);
+      }
     });
   }
 
