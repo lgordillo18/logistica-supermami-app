@@ -16,6 +16,7 @@ import { IonicSelectableModule } from "ionic-selectable";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { FiltersComponent } from '../shared/components/filters/filters.component';
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
+import { TicketAsigComponent } from "./components/ticket-asig/ticket-asig.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TicketCardComponent } from "./components/ticket-card/ticket-card.compon
     ProductsModalComponent,
     ProductListComponent,
     FiltersComponent,
-    TicketCardComponent
+    TicketCardComponent,
+    TicketAsigComponent
   ],
   imports: [
     CommonModule,
