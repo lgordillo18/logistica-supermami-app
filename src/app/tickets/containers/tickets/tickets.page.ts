@@ -13,6 +13,8 @@ export class TicketsPage implements OnInit {
   public approvedTickets: any[];
   public rejectedTickets: any[];
   public currentSegment: string = 'pending';
+  public show: boolean = true;
+  showMainContent: Boolean = true;
 
   public textConfig = { primaryText: 'empleado', secondaryText: 'estado' };
 
@@ -30,23 +32,28 @@ export class TicketsPage implements OnInit {
 
     this.pendingTickets = [
       {
-        id: 1,
-        empleado: "Gonzalo",
-        estado: 'pendiente'
+        id: 17,
+        sucursal: "San Vicente",
+        fecha: '28-10-2021'
+      },
+      {
+        id: 18,
+        sucursal: "General Paz",
+        fecha: '28-10-2021'
       }
     ];
     this.approvedTickets = [
       {
-        id: 1,
-        empleado: "Lucas",
-        estado: 'aprobado'
+        id: 109,
+        sucursal: "Rodriguez del Busto",
+        fecha: '29-10-2021'
       }
     ];
     this.rejectedTickets = [
       {
-        id: 1,
-        empleado: "David",
-        estado: 'rechazado'
+        id: 47,
+        sucursal: "Salsipuedes",
+        fecha: '30-10-2021'
       }
     ];
   }

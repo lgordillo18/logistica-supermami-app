@@ -12,11 +12,19 @@ export class OfficeService {
     private http: HttpClient) {
   }
 
-  setOffice(newOffice: NewOffice): Observable<any> {
+  newOffice(newOffice: NewOffice): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/office`, {});
   }
-  
+
+  getOffice(officeId): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/office/${officeId}`, {});
+  }
+
   getOffices(): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/offices`, {});
+  }
+
+  deleteOffice(officeId): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/office/delete/${officeId}`, { id: officeId, deleted: true });
   }
 }

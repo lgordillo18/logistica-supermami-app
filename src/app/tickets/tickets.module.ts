@@ -12,6 +12,8 @@ import { SelectOfficesComponent } from "./components/select-offices/select-offic
 import { ProductsModalComponent } from "./components/products-modal/products-modal.component";
 import { IonicSelectableModule } from "ionic-selectable";
 import { ProductListComponent } from "./components/product-list/product-list.component";
+import { FiltersComponent } from '../shared/components/filters/filters.component';
+import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ProductListComponent } from "./components/product-list/product-list.com
     NewTicketPage,
     SelectOfficesComponent,
     ProductsModalComponent,
-    ProductListComponent
+    ProductListComponent,
+    FiltersComponent,
+    TicketCardComponent
   ],
   imports: [
     CommonModule,
@@ -34,4 +38,4 @@ import { ProductListComponent } from "./components/product-list/product-list.com
   ]
 })
 
-export class TicketsModule {}
+export class TicketsModule { }

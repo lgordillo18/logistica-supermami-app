@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfigurationsPage } from './containers/configurations/configurations.page';
 import { UsersListPage } from './containers/user-list/user-list.page';
-import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
-import { VehiclePage } from './containers/vehicle/vehicle.page';
+import { VehiclesListPage } from './containers/vehicle-list/vehicle-list.page';
 import { OfficeListPage } from './containers/office-list/office-list.page';
 
 const routes: Routes = [
@@ -17,15 +16,11 @@ const routes: Routes = [
   },
   {
     path: 'vehicle-list',
-    component: VehicleListPage
+    component: VehiclesListPage
   },
   {
     path: 'office-list',
     component: OfficeListPage
-  },
-  {
-    path: 'create-vehicle',
-    component: VehiclePage
   }
 ];
 @NgModule({

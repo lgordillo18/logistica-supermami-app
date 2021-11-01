@@ -10,22 +10,22 @@ import { UserComponent } from "./components/user/user.component";
 import { ConfigurationsRoutingModule } from "./configurations-routing.module";
 import { ConfigurationsPage } from "./containers/configurations/configurations.page";
 import { UsersListPage } from "./containers/user-list/user-list.page";
-import { VehicleListPage } from './containers/vehicle-list/vehicle-list.page';
-import { VehiclePage } from "./containers/vehicle/vehicle.page";
-import { CreateVehicleComponent } from "./components/vehicle/vehicle.component";
+import { VehiclesListPage } from './containers/vehicle-list/vehicle-list.page';
 import { OfficeListPage } from "./containers/office-list/office-list.page";
+import { VehicleComponent } from "./components/vehicle/vehicle.component";
+import { OfficeComponent } from "./components/office/office.component";
 
 @NgModule({
   declarations: [
     ConfigurationsPage,
-    VehiclePage,
     UsersListPage,
     ListComponent,
     UserComponent,
     ItemSkeletonComponent,
-    VehicleListPage,
+    VehiclesListPage,
+    VehicleComponent,
     OfficeListPage,
-    CreateVehicleComponent,
+    OfficeComponent,
     ItemListComponent
   ],
   imports: [

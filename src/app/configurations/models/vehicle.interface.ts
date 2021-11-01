@@ -2,7 +2,8 @@ export interface Vehicle {
     patent: string;
     vehicleBrand: string;
     vehicleModel: string;
-    vehicleYear: number;
+    year: number;
     kg: number;
     vehicleStatus: string;
+    employee: string;
 }
