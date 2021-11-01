@@ -1,7 +1,7 @@
 <ion-row class="ion-no-padding">
   <ion-col size="12">
     <div *ngFor="let item of arrayList">
-      <ticket-card [ticketItem]="item">
+      <ticket-card [ticketItem]="item" (detailButtonEvent)="openDetailPage($event)">
       </ticket-card>
     </div>
   </ion-col>

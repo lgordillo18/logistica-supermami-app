@@ -16,15 +16,10 @@
         </div>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <h5 class="ion-padding"> Productos seleccionados: </h5>
-        <product-list-component [selectedProducts]="selectedProducts" [withRemoveButton]="false" [totalProducts]="total"></product-list-component>
-        <div class="validation-error" *ngIf="isSubmitted && selectedProducts.length == 0">
-          Debe seleccionar al menos un producto.
-        </div>
-      </ion-col>
-    </ion-row>
+      <product-list-component [headerTitle]="'Productos seleccionados:'" [selectedProducts]="selectedProducts" [withRemoveButton]="false" [totalProducts]="total"></product-list-component>
+      <div class="validation-error" *ngIf="isSubmitted && selectedProducts.length == 0">
+        Debe seleccionar al menos un producto.
+      </div>
     <ion-row class="ion-text-center">
       <ion-col>
         <label> Agregar Productos </label>
