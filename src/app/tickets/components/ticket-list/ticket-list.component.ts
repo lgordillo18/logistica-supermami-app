@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ticket-list',
@@ -7,16 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TicketListComponent implements OnInit {
   @Input() arrayList: any[];
-  @Input() textConfig: any;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
 
+  openDetailPage(ticketId) {
+    this.router.navigate(['/tickets/ticket-details', { ticketId }]);
   }
-
-  get primaryText() {
-    return `item.${this.textConfig.primaryText}`;
-  }
-
 }

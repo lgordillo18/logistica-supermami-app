@@ -1,16 +1,18 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'ticket-card',
   templateUrl: './ticket-card.component.html',
   styleUrls: ['./ticket-card.component.scss']
 })
-export class TicketCardComponent implements OnInit {
+export class TicketCardComponent {
   @Input() ticketItem: any;
+  @Input() hideDetailButton: boolean = false;
+  @Output() detailButtonEvent = new EventEmitter<any>();
 
   constructor() { }
 
-  ngOnInit() {
-    
+  openDetailsEvent(ticketId) {
+    this.detailButtonEvent.emit(ticketId)
   }
 }

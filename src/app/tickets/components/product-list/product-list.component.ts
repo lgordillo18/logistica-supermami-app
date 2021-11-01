@@ -6,9 +6,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
+  @Input() headerTitle = '';
   @Input() selectedProducts = [];
   @Input() withRemoveButton: boolean = true;
   @Input() totalProducts: number = 0;
+  @Input() totalWeight: number = 0;
   @Output() removeProductEvent = new EventEmitter<any>();
   @Output() changeQuantityEvent = new EventEmitter<any>();
 

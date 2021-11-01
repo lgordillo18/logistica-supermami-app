@@ -25,4 +25,8 @@ export class TicketService {
 
     return this.http.get<any>(`${environment.apiUrl}/order-tickets-by-employee/${employeeId}`, {});
   }
+
+  getOrderTicketData(id): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/order-ticket/${id}`, {});
+  }
 }
