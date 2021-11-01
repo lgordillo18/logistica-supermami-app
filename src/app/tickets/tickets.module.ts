@@ -7,6 +7,8 @@ import { TicketsPage } from "./containers/tickets/tickets.page";
 import { TicketListComponent } from "./components/ticket-list/ticket-list.component";
 import { TicketsRoutingModule } from "./tickets-routing.module";
 import { TicketComponent } from "./components/ticket/ticket.component";
+import { TicketDetailsComponent } from "./components/ticket-details/ticket-details.component";
+import { TicketDetailsPage } from "./containers/ticket-details/ticket-details.page";
 import { NewTicketPage } from "./containers/new-ticket/new-ticket.page";
 import { SelectOfficesComponent } from "./components/select-offices/select-offices.component";
 import { ProductsModalComponent } from "./components/products-modal/products-modal.component";
@@ -20,6 +22,8 @@ import { TicketCardComponent } from "./components/ticket-card/ticket-card.compon
     TicketListComponent,
     TicketsPage,
     TicketComponent,
+    TicketDetailsPage,
+    TicketDetailsComponent,
     NewTicketPage,
     SelectOfficesComponent,
     ProductsModalComponent,
