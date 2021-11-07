@@ -16,7 +16,7 @@ import { ProductListComponent } from "./components/product-list/product-list.com
 import { FiltersComponent } from '../shared/components/filters/filters.component';
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
 import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.component";
-import { TicketAsigComponent } from "./components/ticket-asig/ticket-asig.component";
+import { ApprovalModalComponent } from "./components/approval-modal/approval-modal.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { TicketAsigComponent } from "./components/ticket-asig/ticket-asig.compon
     ProductListComponent,
     FiltersComponent,
     TicketCardComponent,
-    TicketAsigComponent
+    ApprovalModalComponent
   ],
   imports: [
     CommonModule,

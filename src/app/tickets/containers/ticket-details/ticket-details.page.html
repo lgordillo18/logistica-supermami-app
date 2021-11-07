@@ -18,5 +18,13 @@
         <product-list-component [headerTitle]="'Productos:'" [withRemoveButton]="false" [selectedProducts]="selectedProducts" [totalProducts]="totalProducts" [totalWeight]="totalWeight"></product-list-component>
       </ion-col>
     </ion-row>
+    <ion-row *ngIf="currentEmployeeRol === 'encargado'">
+      <ion-col size="6">
+        <ion-button expand="block" color="danger" size="large" (click)="openModal('rejected')"> Rechazar <ion-icon name="close-outline"></ion-icon> </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="primary" size="large" (click)="openModal('approval')"> Aprobar <ion-icon name="checkmark-outline"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
   </ion-content>
 </ion-router-outlet>
