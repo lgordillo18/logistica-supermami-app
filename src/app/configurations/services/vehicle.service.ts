@@ -25,7 +25,7 @@ export class VehicleService {
   }
 
   getDealers(): Observable<any>{
-    return this.http.get<any>(`${environment.apiUrl}/users-by-rol/4`,{}); //rol 4 son los repartidores
+    return this.http.get<any>(`${environment.apiUrl}/users-by-rol/3`,{}); //rol 3 son los repartidores
   }
 
   getStatus(): Observable<any> {

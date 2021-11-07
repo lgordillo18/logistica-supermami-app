@@ -28,14 +28,9 @@
             <ion-text>  </ion-text>
           </ion-col>
         </ion-item>
-        <ion-item class="ion-no-padding" lines="full">
-          <ion-col size="12">
-            <ion-text>  </ion-text>
-          </ion-col>
-        </ion-item>
       </div>
       <ion-item *ngFor="let item of selectedProducts" class="ion-no-padding" lines="full">
-        <ion-icon *ngIf="withRemoveButton" class="delete-icon" slot="start" name="trash-outline" (click)="deleteProduct(item.id)"></ion-icon>
+        <ion-icon *ngIf="withRemoveButton" class="delete-icon" slot="start" name="trash-outline" color="danger" (click)="deleteProduct(item.id)"></ion-icon>
         <ion-col size="10">
           <ion-text> {{ item.name }} </ion-text>
         </ion-col>

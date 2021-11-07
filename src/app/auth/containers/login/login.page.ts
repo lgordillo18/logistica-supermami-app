@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'login',
@@ -10,20 +11,49 @@ import { AlertController } from '@ionic/angular';
 export class LoginPage implements OnInit {
   constructor(
     private router: Router,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
   }
 
   loginEvent(params) {
-    if (params.username === 'empleado' && params.password === '12345') {
-      localStorage.setItem('current_employee_id', '3');
+    // this.authService.validateUser({ username: params.username, password: params.password }).subscribe(
+    //   (response) => {
+    //     console.log(response);
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     this.showLoginErrorAlert();
+    //   }
+    // );
 
-      this.router.navigate(['/tabs/tickets']);
+    if (params.username === 'empleado' && params.password === '12345') {
+      localStorage.setItem('current_employee_id', '1');
+      localStorage.setItem('current_employee_rol', 'empleado');
+      localStorage.setItem('current_office_id', '1');
+    } else if (params.username === 'encargado' && params.password === '12345') {
+      localStorage.setItem('current_employee_id', '2');
+      localStorage.setItem('current_employee_rol', 'encargado');
+      localStorage.setItem('current_office_id', '2');
+    } else if (params.username === 'repartidor' && params.password === '12345') {
+      localStorage.setItem('current_employee_id', '3');
+      localStorage.setItem('current_employee_rol', 'repartidor');
+      localStorage.setItem('current_office_id', '2');
+    } else if (params.username === 'admin' && params.password === '12345') {
+      localStorage.setItem('current_employee_id', '4');
+      localStorage.setItem('current_employee_rol', 'encargado');
+      localStorage.setItem('current_office_id', '1');
     } else {
-      this.showLoginErrorAlert();
+      return this.showLoginErrorAlert();
     }
+
+    this.goToMainPage();
+  }
+
+  private goToMainPage() {
+    this.router.navigate(['/tabs/tickets']);
   }
 
   private async showLoginErrorAlert() {
@@ -35,7 +65,3 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 }
-
-
-
-

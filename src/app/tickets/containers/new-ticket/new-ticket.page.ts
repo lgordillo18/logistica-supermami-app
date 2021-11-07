@@ -20,6 +20,8 @@ export class NewTicketPage implements OnInit {
   public products = [];
   public officeIdSelected = null;
   public selectedProducts = [];
+  public originOfficeId = null;
+  public employeeId = null;
   public isSubmitted: boolean = false;
 
   constructor(
@@ -33,6 +35,8 @@ export class NewTicketPage implements OnInit {
 
   ngOnInit() {
     this.loadingHelper.present();
+    this.originOfficeId = localStorage.getItem('current_office_id');
+    this.employeeId = localStorage.getItem('current_employee_id');
     combineLatest(this.officeService.getOffices(), this.ticketService.getProducts()).pipe(take(1)).subscribe(async ([offices, products]) => {
       this.offices = offices ? offices : [];
       this.products = products ? products : [];
@@ -71,8 +75,9 @@ export class NewTicketPage implements OnInit {
 
       const newOrder = {
         office_id: this.officeIdSelected,
-        employee_id: 3,
+        employee_id: this.employeeId,
         ticket_status_id: 1,
+        origin_office_id: this.originOfficeId,
         products: products
       };
 
