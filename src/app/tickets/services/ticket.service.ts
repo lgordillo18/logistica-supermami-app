@@ -40,4 +40,12 @@ export class TicketService {
   modifyOrder(orderId: any, orderData: ModifyTicket): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/order-ticket/${orderId}`, orderData);
   }
+
+  getRejectedReasons(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/order-ticket/rejected-reasons`, {});
+  }
+
+  getCancelledReasons(): Observable<any> {
+    return this.http.get<any>(`${environment.apiUrl}/order-ticket/cancelled-reasons`, {});
+  }
 }

@@ -1,0 +1,31 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" color="primary"> Cancelar </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> Cancelar pedido </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="cancelledReasonForm">
+        <ion-item-group mode="md">
+          <ion-item>
+            <p> Para cancelar la entrega del pedido debe indicar un motivo de cancelación: </p>
+            <ion-label position="floating">Motivos de cancelación:</ion-label>
+            <ion-select placeholder="Seleccione" okText="Ok" cancelText="Cancelar" formControlName="reason" (ionChange)="onChangeEvent($event)">
+              <ion-select-option *ngFor="let reason of allReasons" value="{{reason.id}}">{{ reason.name | capitalize}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-item-group>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer class="ion-no-border ion-hide-md-up">
+  <ion-toolbar class="ion-no-padding">
+    <ion-button *ngIf="enableButton" expand="block" color="danger" (click)="confirmButton()"> Cancelar Entrega </ion-button>
+  </ion-toolbar>
+</ion-footer>

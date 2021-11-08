@@ -15,8 +15,9 @@ import { IonicSelectableModule } from "ionic-selectable";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { FiltersComponent } from '../shared/components/filters/filters.component';
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
-import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.component";
 import { ApprovalModalComponent } from "./components/approval-modal/approval-modal.component";
+import { RejectedModalComponent } from "./components/rejected-modal/rejected-modal.component";
+import { CancelledModalComponent } from "./components/cancelled-modal/cancelled-modal.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,6 @@ import { ApprovalModalComponent } from "./components/approval-modal/approval-mod
     TicketsPage,
     TicketComponent,
     TicketCardComponent,
-    TicketRejectComponent,
     TicketDetailsPage,
     NewTicketPage,
     SelectOfficesComponent,
@@ -32,7 +32,9 @@ import { ApprovalModalComponent } from "./components/approval-modal/approval-mod
     ProductListComponent,
     FiltersComponent,
     TicketCardComponent,
-    ApprovalModalComponent
+    ApprovalModalComponent,
+    RejectedModalComponent,
+    CancelledModalComponent
   ],
   imports: [
     CommonModule,

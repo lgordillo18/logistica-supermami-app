@@ -83,7 +83,7 @@ export class TicketsPage implements OnInit {
   }
 
   private async getAllDealerTickets() {
-    this.ticketService.getAllEmployeeTickets(this.employeeId).subscribe(async (response) => {
+    this.ticketService.getAllDealerTickets(this.employeeId).subscribe(async (response) => {
       if (response) {
         this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
         this.deliveredTickets = response.deliveredTickets ? response.deliveredTickets : [];

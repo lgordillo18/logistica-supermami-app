@@ -6,10 +6,10 @@ export class ModifyTicket {
   finish_date: any;
 
   constructor(order_ticket) {
-    this.assigned_employee = { id: Number(order_ticket.assigned_employee_id) };
+    this.assigned_employee = order_ticket.assigned_employee_id ? { id: Number(order_ticket.assigned_employee_id)} : null;
     this.ticket_status = { id: order_ticket.ticket_status_id };
-    this.rejected_reason = order_ticket.rejected_reason_id ? { id: order_ticket.rejected_reason_id } : null;
-    this.cancelled_reason = order_ticket.cancelled_reason_id ? { id: order_ticket.cancelled_reason_id } : null;
+    this.rejected_reason = order_ticket.rejected_reason_id ? { id: Number(order_ticket.rejected_reason_id) } : null;
+    this.cancelled_reason = order_ticket.cancelled_reason_id ? { id: Number(order_ticket.cancelled_reason_id) } : null;
     this.finish_date = this.finish_date ? this.finish_date : null;
   }
 }
