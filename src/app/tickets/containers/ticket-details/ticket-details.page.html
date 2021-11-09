@@ -1,30 +1,34 @@
 <ion-router-outlet>
-  <ion-header translucent>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/tabs/tickets"></ion-back-button>
-      </ion-buttons>
-      <ion-title>Detalle Pedido</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="light-gray-background">
-    <ion-row *ngIf="ticketData">
-      <ion-col size="12">
-        <ticket-card [ticketItem]="ticketData" [hideDetailButton]="true"></ticket-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12" class="list-col">
-        <product-list-component [headerTitle]="'Productos:'" [withRemoveButton]="false" [selectedProducts]="selectedProducts" [totalProducts]="totalProducts" [totalWeight]="totalWeight"></product-list-component>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="currentEmployeeRol === 'encargado'">
-      <ion-col size="6">
-        <ion-button expand="block" color="danger" size="large" (click)="openModal('rejected')"> Rechazar <ion-icon name="close-outline"></ion-icon> </ion-button>
-      </ion-col>
-      <ion-col size="6">
-        <ion-button expand="block" color="primary" size="large" (click)="openModal('approval')"> Aprobar <ion-icon name="checkmark-outline"></ion-icon></ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-content>
+    <ion-header translucent>
+        <ion-toolbar color="primary">
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref="/tabs/tickets"></ion-back-button>
+            </ion-buttons>
+            <ion-title>Detalle Pedido</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content class="light-gray-background">
+        <ion-row *ngIf="ticketData">
+            <ion-col size="12">
+                <ticket-card card="card" [ticketItem]="ticketData" [hideDetailButton]="true"></ticket-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12" class="list-col">
+                <product-list-component [headerTitle]="'Productos:'" [withRemoveButton]="false" [selectedProducts]="selectedProducts" [totalProducts]="totalProducts" [totalWeight]="totalWeight"></product-list-component>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="currentEmployeeRol === 'encargado'">
+            <ion-col size="6">
+                <ion-button expand="block" color="danger" size="large" (click)="openModal('rejected')"> Rechazar
+                    <ion-icon name="close-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button expand="block" color="primary" size="large" (click)="openModal('approval')"> Aprobar
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-content>
 </ion-router-outlet>
