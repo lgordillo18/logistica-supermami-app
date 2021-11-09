@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class TicketCardComponent {
   @Input() ticketItem: any;
   @Input() hideDetailButton: boolean = false;
+  @Input() card: string;
   @Output() detailButtonEvent = new EventEmitter<any>();
 
   constructor() { }

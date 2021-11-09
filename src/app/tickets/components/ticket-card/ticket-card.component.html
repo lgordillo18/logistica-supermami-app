@@ -1,18 +1,18 @@
 <ion-card>
-  <ion-card-header>
-    <ion-card-subtitle>
-      <ion-icon name="calendar-outline"></ion-icon> Fecha: {{ ticketItem.date }}
-    </ion-card-subtitle>
-    <ion-card-title class="ion-margin-top"><span class="office-name"> Sucursal: {{ (hideDetailButton ? ticketItem.office_name : ticketItem.office) | capitalize }}
+    <ion-card-header [class]="card">
+        <ion-card-subtitle>
+            <ion-icon name="calendar-outline"></ion-icon> Fecha: {{ ticketItem.date }}
+        </ion-card-subtitle>
+        <ion-card-title class="ion-margin-top"><span class="office-name"> Sucursal: {{ (hideDetailButton ? ticketItem.office_name : ticketItem.office) | capitalize }}
       </span></ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-icon name="cube-outline"></ion-icon> Nº Pedido: #{{ hideDetailButton ? ticketItem.id : ticketItem.ticket_number }}
-    <div *ngIf="hideDetailButton" class="ion-padding-top">
-      <ion-icon name="person-outline"></ion-icon> Creado por: {{ ticketItem.employee_name | capitalize }}
-    </div>
-  </ion-card-content>
-  <ion-footer *ngIf="!hideDetailButton" color="danger">
-    <ion-button class="detail-button" expand="full" (click)="openDetailsEvent(ticketItem.ticket_number)">Ver Detalles</ion-button>
-  </ion-footer>
+    </ion-card-header>
+    <ion-card-content [class]="card">
+        <ion-icon name="cube-outline"></ion-icon> Nº Pedido: #{{ hideDetailButton ? ticketItem.id : ticketItem.ticket_number }}
+        <div *ngIf="hideDetailButton" class="ion-padding-top">
+            <ion-icon name="person-outline"></ion-icon> Creado por: {{ ticketItem.employee_name | capitalize }}
+        </div>
+    </ion-card-content>
+    <ion-footer *ngIf="!hideDetailButton" color="danger">
+        <ion-button class="detail-button " color="secondary" expand="full" (click)="openDetailsEvent(ticketItem.ticket_number)">Ver Detalles</ion-button>
+    </ion-footer>
 </ion-card>
