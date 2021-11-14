@@ -1,0 +1,25 @@
+<ion-row class="ion-no-padding">
+  <ion-col size="12">
+    <ion-grid class="ion-margin">
+      <ion-row class="ion-padding-bottom">
+        <ion-col class="ion-text-left" size="3">Posición</ion-col>
+        <ion-col size="6">Producto</ion-col>
+        <ion-col class="ion-text-center" size="3">Cantidad</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of chartData; index as i">
+        <ion-col size="3" class="ion-text-left position">#{{ i + 1 }}</ion-col>
+        <ion-col size="6" class="product-name">{{ item.product_name }}</ion-col>
+        <ion-col size="3" class="ion-text-center">{{ item.product_quantity }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-col>
+</ion-row>
+<ion-row class="ion-no-padding">
+  <ion-col size="12">
+    <ion-card>
+      <ion-card-content>
+        <canvas #barCanvas style="position: relative; height: 20vh; width: 40vw;"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>

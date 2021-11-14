@@ -40,10 +40,10 @@ export class TicketsPage implements OnInit {
     const params = this.route.snapshot.params;
     if (params.message) {
       if (params.message === 'success') {
-        this.showSuccessToast('Ticket de pedido creado con exito!');
+        this.showSuccessToast('Pedido creado con éxito!');
       }
       if (params.message === 'edit-success') {
-        this.showSuccessToast('Ticket de pedido actualizado con exito!');
+        this.showSuccessToast('Pedido actualizado con éxito!');
       }
     }
     

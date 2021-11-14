@@ -13,7 +13,6 @@ import { SelectOfficesComponent } from "./components/select-offices/select-offic
 import { ProductsModalComponent } from "./components/products-modal/products-modal.component";
 import { IonicSelectableModule } from "ionic-selectable";
 import { ProductListComponent } from "./components/product-list/product-list.component";
-import { FiltersComponent } from '../shared/components/filters/filters.component';
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
 import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.component";
 import { ApprovalModalComponent } from "./components/approval-modal/approval-modal.component";
@@ -30,7 +29,6 @@ import { ApprovalModalComponent } from "./components/approval-modal/approval-mod
     SelectOfficesComponent,
     ProductsModalComponent,
     ProductListComponent,
-    FiltersComponent,
     TicketCardComponent,
     ApprovalModalComponent
   ],

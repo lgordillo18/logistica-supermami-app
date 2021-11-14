@@ -1,82 +1,84 @@
 <ion-router-outlet>
-    <ion-header translucent>
-        <ion-toolbar color="secondary">
-            <ion-title class="ion-text-center"> Listado de Pedidos </ion-title>
-            <ion-buttons slot="end" *ngIf="currentEmployeeRol === 'empleado' || currentEmployeeRol === 'encargado'">
-                <ion-icon size="large" class="add-button" color="primary" name="add-circle-outline" routerLink="/tickets/new-ticket">
-                </ion-icon>
-            </ion-buttons>
-        </ion-toolbar>
-    </ion-header>
-    <ion-content class="light-gray-background">
-        <ion-button color="secondary" expand="full" fill="outline" (click)="showMainContent=!showMainContent">
-            <ion-icon name="funnel-outline"></ion-icon>Filtrar</ion-button>
-        <div class="filters" *ngIf="!showMainContent">
-            <filters placeHolder1="Sucursal" placeHolder2="Estado" placeHolder3="N° pedido" placeHolder4="Fecha"></filters>
-        </div>
-        <ion-row>
-            <ion-col size="12">
-                <ng-container *ngIf="currentEmployeeRol === 'empleado'">
-                    <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
-                        <ion-segment-button value="pending">
-                            <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
-                            <ion-icon name="alarm-outline"></ion-icon>
-                        </ion-segment-button>
-                        <ion-segment-button value="approval">
-                            <ion-label class="ion-text-capitalize"> Aprobados </ion-label>
-                            <ion-icon name="checkmark-circle-outline"></ion-icon>
-                        </ion-segment-button>
-                        <ion-segment-button value="rejected">
-                            <ion-label class="ion-text-capitalize"> Rechazados </ion-label>
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </ion-segment-button>
-                    </ion-segment>
-                    <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="pendingTickets">
-                    </ticket-list>
-                    <ticket-list *ngIf="currentSegment === 'approval'" [arrayList]="approvedTickets">
-                    </ticket-list>
-                    <ticket-list *ngIf="currentSegment === 'rejected'" [arrayList]="rejectedTickets">
-                    </ticket-list>
-                </ng-container>
-                <ng-container *ngIf="currentEmployeeRol === 'encargado'">
-                    <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
-                        <ion-segment-button value="pending">
-                            <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
-                        </ion-segment-button>
-                        <ion-segment-button value="approval">
-                            <ion-label class="ion-text-capitalize"> En curso </ion-label>
-                        </ion-segment-button>
-                        <ion-segment-button value="rejected">
-                            <ion-label class="ion-text-capitalize"> Rechazados </ion-label>
-                        </ion-segment-button>
-                    </ion-segment>
-                    <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="pendingTickets">
-                    </ticket-list>
-                    <ticket-list *ngIf="currentSegment === 'approval'" [arrayList]="approvedTickets">
-                    </ticket-list>
-                    <ticket-list *ngIf="currentSegment === 'rejected'" [arrayList]="rejectedTickets">
-                    </ticket-list>
-                </ng-container>
-                <ng-container *ngIf="currentEmployeeRol === 'repartidor'">
-                    <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
-                        <ion-segment-button value="pending">
-                            <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
-                        </ion-segment-button>
-                        <ion-segment-button value="delivered">
-                            <ion-label class="ion-text-capitalize"> Entregados </ion-label>
-                        </ion-segment-button>
-                        <ion-segment-button value="cancelled">
-                            <ion-label class="ion-text-capitalize"> Cancelados </ion-label>
-                        </ion-segment-button>
-                    </ion-segment>
-                    <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="approvedTickets">
-                    </ticket-list>
-                    <ticket-list *ngIf="currentSegment === 'delivered'" [arrayList]="deliveredTickets">
-                    </ticket-list>
-                    <ticket-list *ngIf="currentSegment === 'cancelled'" [arrayList]="cancelledTickets">
-                    </ticket-list>
-                </ng-container>
-            </ion-col>
-        </ion-row>
-    </ion-content>
+  <ion-header translucent>
+    <ion-toolbar color="primary">
+      <ion-title class="ion-text-center"> Listado de Pedidos </ion-title>
+      <ion-buttons slot="end" *ngIf="currentEmployeeRol === 'empleado' || currentEmployeeRol === 'encargado'">
+        <ion-icon size="large" class="add-button" color="warning" name="add-circle-outline"
+          routerLink="/tickets/new-ticket">
+        </ion-icon>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="light-gray-background">
+    <!-- <ion-button color="secondary" expand="full" fill="outline" (click)="showMainContent=!showMainContent">
+      <ion-icon name="funnel-outline"></ion-icon>Filtrar
+    </ion-button>
+    <div class="filters" *ngIf="!showMainContent">
+      <filters placeHolder1="Sucursal" placeHolder2="Estado" placeHolder3="N° pedido" placeHolder4="Fecha"></filters>
+    </div> -->
+    <ion-row>
+      <ion-col size="12">
+        <ng-container *ngIf="currentEmployeeRol === 'empleado'">
+          <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
+            <ion-segment-button value="pending">
+              <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
+              <ion-icon name="alarm-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="approval">
+              <ion-label class="ion-text-capitalize"> Aprobados </ion-label>
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </ion-segment-button>
+            <ion-segment-button value="rejected">
+              <ion-label class="ion-text-capitalize"> Rechazados </ion-label>
+              <ion-icon name="close-circle-outline"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>
+          <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="pendingTickets">
+          </ticket-list>
+          <ticket-list *ngIf="currentSegment === 'approval'" [arrayList]="approvedTickets">
+          </ticket-list>
+          <ticket-list *ngIf="currentSegment === 'rejected'" [arrayList]="rejectedTickets">
+          </ticket-list>
+        </ng-container>
+        <ng-container *ngIf="currentEmployeeRol === 'encargado'">
+          <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
+            <ion-segment-button value="pending">
+              <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="approval">
+              <ion-label class="ion-text-capitalize"> En curso </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="rejected">
+              <ion-label class="ion-text-capitalize"> Rechazados </ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="pendingTickets">
+          </ticket-list>
+          <ticket-list *ngIf="currentSegment === 'approval'" [arrayList]="approvedTickets">
+          </ticket-list>
+          <ticket-list *ngIf="currentSegment === 'rejected'" [arrayList]="rejectedTickets">
+          </ticket-list>
+        </ng-container>
+        <ng-container *ngIf="currentEmployeeRol === 'repartidor'">
+          <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
+            <ion-segment-button value="pending">
+              <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="delivered">
+              <ion-label class="ion-text-capitalize"> Entregados </ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="cancelled">
+              <ion-label class="ion-text-capitalize"> Cancelados </ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="approvedTickets">
+          </ticket-list>
+          <ticket-list *ngIf="currentSegment === 'delivered'" [arrayList]="deliveredTickets">
+          </ticket-list>
+          <ticket-list *ngIf="currentSegment === 'cancelled'" [arrayList]="cancelledTickets">
+          </ticket-list>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-content>
 </ion-router-outlet>

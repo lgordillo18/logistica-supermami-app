@@ -62,7 +62,7 @@ export class TicketDetailsPage implements OnInit {
         break;
     }
   }
-
+  
   async openApprovalModal() {
     const modal = await this.modalController.create({
       component: ApprovalModalComponent,
