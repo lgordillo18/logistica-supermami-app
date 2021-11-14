@@ -58,7 +58,7 @@ export class LoginPage implements OnInit {
 
   private async showLoginErrorAlert() {
     const alert = await this.alertController.create({
-      header: 'Login Error',
+      header: 'Error',
       message: 'Usuario y/o contraseña incorrectos',
       buttons: ['OK']
     });

@@ -1,20 +1,21 @@
 <ion-header translucent>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-back-button> Volver </ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center"> Listado de Vehiculos </ion-title>
+        <ion-buttons slot="end">
+            <ion-icon size="large" class="add-button" color="warning" name="add-circle-outline"
+                (click)="openVehicleFormModal()">
+            </ion-icon>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-fab vertical="bottom" horizontal="end" (click)="openVehicleFormModal()">
-    <ion-fab-button size="small" type="submit" translucent>
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-</ion-fab>
 <ion-content fullscreen>
     <ion-row>
         <ion-col>
-            <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editVehicle($event)" (removeEvent)="showDeleteAlert($event)">
+            <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editVehicle($event)"
+                (removeEvent)="showDeleteAlert($event)">
             </list-component>
         </ion-col>
     </ion-row>

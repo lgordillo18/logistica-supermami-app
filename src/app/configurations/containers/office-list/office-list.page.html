@@ -1,20 +1,21 @@
 <ion-header tranlucent>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
+            <ion-back-button> Volver </ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center">Lista de Sucursales</ion-title>
+        <ion-buttons slot="end">
+            <ion-icon size="large" class="add-button" color="warning" name="add-circle-outline"
+                (click)="openOfficeFormModal()">
+            </ion-icon>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
-<ion-fab vertical="bottom" horizontal="end" (click)="openOfficeFormModal()" color="primaryText">
-    <ion-fab-button size="small" type="submit" translucent>
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-</ion-fab>
 <ion-content fullscreen>
     <ion-row>
         <ion-col>
-            <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editOffice($event)" (removeEvent)="showDeleteAlert($event)">
+            <list-component [arrayList]="arrayList" [loading]="loading" (editEvent)="editOffice($event)"
+                (removeEvent)="showDeleteAlert($event)">
             </list-component>
         </ion-col>
     </ion-row>

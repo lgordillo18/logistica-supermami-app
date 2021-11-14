@@ -1,0 +1,30 @@
+<ion-row *ngIf="!data" class="ion-no-padding">
+  <ion-col size="12">
+    <h3> No se han encontrado datos </h3>
+  </ion-col>
+</ion-row>
+<ion-row *ngIf="data" class="ion-no-padding">
+  <ion-col size="12">
+    <ion-grid class="ion-margin">
+      <ion-row class="ion-padding-bottom">
+        <ion-col class="ion-text-left" size="4">Deposito</ion-col>
+        <ion-col size="4">Repartidor</ion-col>
+        <ion-col class="ion-text-center" size="4">Cantidad</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of data; index as i">
+        <ion-col size="4" class="ion-text-left position">{{ item.office_name | capitalize }}</ion-col>
+        <ion-col size="4" class="product-name">{{ item.full_name | capitalize }}</ion-col>
+        <ion-col size="4" class="ion-text-center">{{ item.total }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-col>
+</ion-row>
+<ion-row class="ion-no-padding" *ngIf="data">
+  <ion-col size="12">
+    <ion-card>
+      <ion-card-content>
+        <canvas #doughnutCanvas style="position: relative; height:20vh; width:40vw"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>

@@ -8,16 +8,6 @@ import { TicketsModule } from './tickets/tickets.module';
 const routes: Routes = [
   { path: '', component: LoginPage },
   { path: 'tabs', component: TabsPage, children: [
-    // {
-    //   path: '',
-    //   redirectTo: '/tabs/tickets',
-    //   pathMatch: 'full'
-    // },
-    // {
-    //   path: 'tickets',
-    //   children: [{ path: '', component: HomePage }]
-    // },
-    //{
     {
       path: 'tickets',
       children: [
@@ -25,6 +15,16 @@ const routes: Routes = [
           path: '',
           loadChildren: () =>
             import('./tickets/tickets.module').then(m => m.TicketsModule)
+        }
+      ]
+    },
+    {
+      path: 'reports',
+      children: [
+        {
+          path: '',
+          loadChildren: () =>
+            import('./reports/reports.module').then(m => m.ReportsModule)
         }
       ]
     },
