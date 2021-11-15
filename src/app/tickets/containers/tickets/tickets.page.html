@@ -44,12 +44,15 @@
           <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
             <ion-segment-button value="pending">
               <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
+              <ion-icon name="alarm-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="approval">
               <ion-label class="ion-text-capitalize"> En curso </ion-label>
+              <ion-icon name="play-forward-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="rejected">
               <ion-label class="ion-text-capitalize"> Rechazados </ion-label>
+              <ion-icon name="close-circle-outline"></ion-icon>
             </ion-segment-button>
           </ion-segment>
           <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="pendingTickets">
@@ -63,12 +66,15 @@
           <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
             <ion-segment-button value="pending">
               <ion-label class="ion-text-capitalize"> Pendientes </ion-label>
+              <ion-icon name="alarm-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="delivered">
               <ion-label class="ion-text-capitalize"> Entregados </ion-label>
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
             </ion-segment-button>
             <ion-segment-button value="cancelled">
               <ion-label class="ion-text-capitalize"> Cancelados </ion-label>
+              <ion-icon name="checkmark-circle-outline"></ion-icon>
             </ion-segment-button>
           </ion-segment>
           <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="approvedTickets">

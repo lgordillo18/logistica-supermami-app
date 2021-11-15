@@ -11,6 +11,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   validateUser(user: Credentials): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/valitate-user`, user);
+    const params:any = {
+      username: encodeURIComponent(user.username),
+      password: encodeURIComponent(user.password)
+    }
+
+    return this.http.get<any>(`${environment.apiUrl}/valitate-user.json`, { params });
   }
 }

@@ -36,7 +36,7 @@ export class TicketsPage implements OnInit {
   }
 
   ngOnInit() {
-    this.loadingHelper.present();
+    // this.loadingHelper.present();
     const params = this.route.snapshot.params;
     if (params.message) {
       if (params.message === 'success') {
@@ -63,7 +63,7 @@ export class TicketsPage implements OnInit {
   private async getAllEmployeeTickets() {
     this.ticketService.getAllEmployeeTickets(this.employeeId).subscribe(async (response) => {
       if (response) {
-        this.pendingTickets = response.pendingTickets ? response.pendingTickets : [];
+        this.pendingTickets = response.pendingTickets ? response.pendingTickets.reverse() : [];
         this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
         this.rejectedTickets = response.rejectedTickets ? response.rejectedTickets : [];
       }

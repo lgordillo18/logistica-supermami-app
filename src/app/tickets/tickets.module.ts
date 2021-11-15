@@ -6,7 +6,6 @@ import { SharedModule } from "../shared/shared.module";
 import { TicketsPage } from "./containers/tickets/tickets.page";
 import { TicketListComponent } from "./components/ticket-list/ticket-list.component";
 import { TicketsRoutingModule } from "./tickets-routing.module";
-import { TicketComponent } from "./components/ticket/ticket.component";
 import { TicketDetailsPage } from "./containers/ticket-details/ticket-details.page";
 import { NewTicketPage } from "./containers/new-ticket/new-ticket.page";
 import { SelectOfficesComponent } from "./components/select-offices/select-offices.component";
@@ -21,7 +20,6 @@ import { ApprovalModalComponent } from "./components/approval-modal/approval-mod
   declarations: [
     TicketListComponent,
     TicketsPage,
-    TicketComponent,
     TicketCardComponent,
     TicketRejectComponent,
     TicketDetailsPage,
