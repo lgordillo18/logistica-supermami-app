@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
+  public currentEmployeeRol = null;
 
   constructor() {
-    
+    this.currentEmployeeRol = localStorage.getItem('current_employee_rol');
   }
 
   ngOnInit() { }

@@ -1,0 +1,6 @@
+{
+    "/api/*": {
+        "target": "https://logistica-service-beta.herokuapp.com/api/*",
+        "secure": false
+    }
+}

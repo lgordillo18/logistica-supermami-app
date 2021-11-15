@@ -5,7 +5,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './configurations.page.html'
 })
 export class ConfigurationsPage implements OnInit {
-  constructor() { }
+  public currentEmployeeRol = null;
+
+  constructor() {
+    this.currentEmployeeRol = localStorage.getItem('current_employee_rol');
+  }
 
   ngOnInit() {
   }
