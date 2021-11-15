@@ -4,8 +4,15 @@
       <ion-icon name="calendar-outline"></ion-icon> Fecha: {{ ticketItem.date }}
     </ion-card-subtitle>
     <ion-card-title class="ion-margin-top">
-      <span *ngIf="currentEmployeeRol !== 'encargado'" class="office-name"> Sucursal: {{ (hideDetailButton ? ticketItem.office_name : ticketItem.office) | capitalize }} </span>
-      <span *ngIf="currentEmployeeRol === 'encargado'" class="office-name"> Sucursal de Destino: {{ ticketItem.origin_office | capitalize }} </span>
+      <ion-row *ngIf="currentEmployeeRol !== 'encargado'">
+        <span *ngIf="currentEmployeeRol !== 'administrador'" class="office-name"> Sucursal: </span>
+        <span *ngIf="currentEmployeeRol === 'administrador'" class="office-name"> Sucursal Origen: </span> 
+        <div class="office-name-text">{{ (hideDetailButton ? ticketItem.office_name : ticketItem.office) | capitalize }}</div>
+      </ion-row>
+      <ion-row *ngIf="currentEmployeeRol === 'encargado' || currentEmployeeRol === 'administrador'"  class="ion-padding-top">
+        <span class="office-name"> Sucursal de Destino: </span> 
+        <div class="office-name-text">{{ ticketItem.origin_office | capitalize }}</div>
+      </ion-row>
     </ion-card-title>
   </ion-card-header>
   <ion-card-content [class]="card">
@@ -13,6 +20,9 @@
     ticketItem.ticket_number }}
     <div *ngIf="hideDetailButton" class="ion-padding-top">
       <ion-icon name="person-outline"></ion-icon> Creado por: {{ ticketItem.employee_name | capitalize }}
+    </div>
+    <div *ngIf="currentEmployeeRol === 'administrador'" class="ion-padding-top">
+      <ion-icon name="alert-circle-outline"></ion-icon> Estado: {{ (ticketItem.status ? ticketItem.status : ticketItem.ticket_status.name) | capitalize }}
     </div>
   </ion-card-content>
   <ion-footer *ngIf="!hideDetailButton" color="danger">

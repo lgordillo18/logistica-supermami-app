@@ -16,6 +16,7 @@ export class TicketsPage implements OnInit, AfterViewInit {
   public rejectedTickets: any[];
   public deliveredTickets: any[];
   public cancelledTickets: any[];
+  public allTickets: any[];
   public currentSegment: string = 'pending';
   public show: boolean = true;
   showMainContent: Boolean = true;
@@ -63,6 +64,10 @@ export class TicketsPage implements OnInit, AfterViewInit {
     if (this.currentEmployeeRol === 'repartidor') {
       this.getAllDealerTickets();
     }
+
+    if (this.currentEmployeeRol === 'administrador') {
+      this.getAllTickets();
+    }
   }
 
   async getOffices() {
@@ -73,6 +78,15 @@ export class TicketsPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.loadingHelper.dismiss();
+  }
+
+  private async getAllTickets() {
+    this.ticketService.getAllTickets().subscribe(async (response) => {
+      if (response) {
+        this.allTickets = response;
+      }
+      this.loadingHelper.dismiss();
+    });
   }
 
   private async getAllEmployeeTickets() {

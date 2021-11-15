@@ -21,6 +21,10 @@ export class TicketService {
     return this.http.post<any>(`${environment.apiUrl}/order-ticket`, newOrder);
   }
 
+  getAllTickets() {
+    return this.http.get<any>(`${environment.apiUrl}/order-tickets`, {});
+  }
+
   getAllEmployeeTickets(employeeId) {
     return this.http.get<any>(`${environment.apiUrl}/order-tickets-by-employee/${employeeId}`, {});
   }

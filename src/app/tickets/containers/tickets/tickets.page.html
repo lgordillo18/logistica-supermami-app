@@ -79,6 +79,16 @@
           <ticket-list *ngIf="currentSegment === 'cancelled'" [arrayList]="cancelledTickets">
           </ticket-list>
         </ng-container>
+        <ng-container *ngIf="currentEmployeeRol === 'administrador'">
+          <ion-segment mode="md" (ionChange)="segmentChanged($event)" value="pending">
+            <ion-segment-button value="pending">
+              <ion-label class="ion-text-capitalize"> Pedidos </ion-label>
+              <ion-icon name="archive-outline"></ion-icon>
+            </ion-segment-button>
+          </ion-segment>
+          <ticket-list *ngIf="currentSegment === 'pending'" [arrayList]="allTickets">
+          </ticket-list>
+        </ng-container>
       </ion-col>
     </ion-row>
   </ion-content>
