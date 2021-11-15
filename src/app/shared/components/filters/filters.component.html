@@ -25,14 +25,9 @@
           </ion-input>
         </ion-item>
       </ion-col>
-      <ion-col size="{{ columnSize }}">
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="totalFilters > 2">
-
     </ion-row>
   </form>
-  <ion-row class="ion-text-center ion-justify-content-center ion-padding-bottom">
+  <ion-row class="ion-text-center ion-justify-content-center ion-padding">
     <ion-col size="6">
       <ion-button *ngIf="showFilters" class="ion-margin-top" color="primary" expand="block" (click)="onFilterEvent()">
         Filtrar
