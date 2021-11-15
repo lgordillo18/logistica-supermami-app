@@ -1,0 +1,31 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" color="primary"> Cancelar </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center"> Rechazar Pedido </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="reasonForm">
+        <ion-item-group mode="md">
+          <ion-item>
+            <p> Para rechazar el pedido debe seleccionar un motivo de rechazo: </p>
+            <ion-label position="floating">Motivo:</ion-label>
+            <ion-select placeholder="Seleccione" okText="Ok" cancelText="Cancelar" formControlName="reason" (ionChange)="onSelectChangeEvent($event)">
+              <ion-select-option *ngFor="let reason of reasons" value="{{reason.id}}">{{ reason.name | capitalize}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-item-group>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="ion-no-padding">
+    <ion-button *ngIf="enableButton" expand="block" color="danger" (click)="onConfirmEvent()"> Rechazar Pedido </ion-button>
+  </ion-toolbar>
+</ion-footer>

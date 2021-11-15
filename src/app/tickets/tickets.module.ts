@@ -13,22 +13,24 @@ import { ProductsModalComponent } from "./components/products-modal/products-mod
 import { IonicSelectableModule } from "ionic-selectable";
 import { ProductListComponent } from "./components/product-list/product-list.component";
 import { TicketCardComponent } from "./components/ticket-card/ticket-card.component";
-import { TicketRejectComponent } from "./components/ticket-reject/ticket-reject.component";
 import { ApprovalModalComponent } from "./components/approval-modal/approval-modal.component";
+import { RejectModalComponent } from "./components/reject-modal/reject-modal.component";
+import { CancelModalComponent } from "./components/cancel-modal/cancel-modal.component";
 
 @NgModule({
   declarations: [
     TicketListComponent,
     TicketsPage,
     TicketCardComponent,
-    TicketRejectComponent,
     TicketDetailsPage,
     NewTicketPage,
     SelectOfficesComponent,
     ProductsModalComponent,
     ProductListComponent,
     TicketCardComponent,
-    ApprovalModalComponent
+    ApprovalModalComponent,
+    RejectModalComponent,
+    CancelModalComponent
   ],
   imports: [
     CommonModule,
