@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">logistica-supermami-app</string>
+    <string name="title_activity_main">logistica-supermami-app</string>
+    <string name="package_name">ionic.supermami.app</string>
+    <string name="custom_url_scheme">ionic.supermami.app</string>
+</resources>

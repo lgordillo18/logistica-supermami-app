@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { OfficeService } from 'src/app/configurations/services/office.service';
 import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
 import { TicketService } from '../../services/ticket.service';
@@ -34,7 +34,7 @@ export class NewTicketPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadingHelper.present();
+    // this.loadingHelper.present();
     this.originOfficeId = localStorage.getItem('current_office_id');
     this.employeeId = localStorage.getItem('current_employee_id');
     combineLatest(this.officeService.getOffices(), this.ticketService.getProducts()).pipe(take(1)).subscribe(async ([offices, products]) => {

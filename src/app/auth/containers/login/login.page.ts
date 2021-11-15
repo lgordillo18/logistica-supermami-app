@@ -42,9 +42,9 @@ export class LoginPage implements OnInit {
       localStorage.setItem('current_employee_rol', 'repartidor');
       localStorage.setItem('current_office_id', '2');
     } else if (params.username === 'admin' && params.password === '12345') {
-      localStorage.setItem('current_employee_id', '4');
-      localStorage.setItem('current_employee_rol', 'encargado');
-      localStorage.setItem('current_office_id', '1');
+      localStorage.setItem('current_employee_id', '5');
+      localStorage.setItem('current_employee_rol', 'administrador');
+      localStorage.setItem('current_office_id', '4');
     } else {
       return this.showLoginErrorAlert();
     }

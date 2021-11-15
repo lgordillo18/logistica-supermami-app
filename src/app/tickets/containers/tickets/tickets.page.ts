@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { OfficeService } from 'src/app/configurations/services/office.service';
 import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
 import { TicketService } from '../../services/ticket.service';
 
@@ -9,7 +10,7 @@ import { TicketService } from '../../services/ticket.service';
   templateUrl: './tickets.page.html',
   styleUrls: ['./tickets.page.scss']
 })
-export class TicketsPage implements OnInit {
+export class TicketsPage implements OnInit, AfterViewInit {
   public pendingTickets: any[];
   public approvedTickets: any[];
   public rejectedTickets: any[];
@@ -21,6 +22,7 @@ export class TicketsPage implements OnInit {
   private employeeId = null;
   public currentEmployeeRol = null;
   private currentOfficeId = null;
+  public allOffices = [];
 
   public textConfig = { primaryText: 'empleado', secondaryText: 'estado' };
 
@@ -28,7 +30,8 @@ export class TicketsPage implements OnInit {
     private route: ActivatedRoute,
     private toastController: ToastController,
     private ticketService: TicketService,
-    private loadingHelper: LoadingHelper
+    private loadingHelper: LoadingHelper,
+    private officeService: OfficeService
   ) { 
     this.employeeId = localStorage.getItem('current_employee_id');
     this.currentEmployeeRol = localStorage.getItem('current_employee_rol');
@@ -37,6 +40,8 @@ export class TicketsPage implements OnInit {
 
   ngOnInit() {
     // this.loadingHelper.present();
+    // this.loadingHelper.dismiss();
+    this.getOffices();
     const params = this.route.snapshot.params;
     if (params.message) {
       if (params.message === 'success') {
@@ -58,6 +63,16 @@ export class TicketsPage implements OnInit {
     if (this.currentEmployeeRol === 'repartidor') {
       this.getAllDealerTickets();
     }
+  }
+
+  async getOffices() {
+    this.officeService.getOffices().subscribe(async (response) => {
+      this.allOffices = response ? response : [];
+    });
+  }
+
+  ngAfterViewInit() {
+    this.loadingHelper.dismiss();
   }
 
   private async getAllEmployeeTickets() {
@@ -83,7 +98,7 @@ export class TicketsPage implements OnInit {
   }
 
   private async getAllDealerTickets() {
-    this.ticketService.getAllEmployeeTickets(this.employeeId).subscribe(async (response) => {
+    this.ticketService.getAllDealerTickets(this.employeeId).subscribe(async (response) => {
       if (response) {
         this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
         this.deliveredTickets = response.deliveredTickets ? response.deliveredTickets : [];
@@ -106,5 +121,19 @@ export class TicketsPage implements OnInit {
 
   segmentChanged(event) {
     this.currentSegment = event.detail.value;
+  }
+
+  filterEvent(response) {
+    console.log(response);
+    // this.loadingHelper.present();
+    
+  }
+
+  get totalFilters() {
+    if (this.currentEmployeeRol === 'administrador') {
+      return 4;
+    } else {
+      return 2;
+    }
   }
 }

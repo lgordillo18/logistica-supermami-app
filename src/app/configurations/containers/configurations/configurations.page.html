@@ -11,7 +11,7 @@
     <ion-row>
       <ion-col>
         <ion-list lines="full">
-          <ion-item *ngIf="currentEmployeeRol === 'administrador' || currentEmployeeRol === 'encargado'" button="true" type="button" detail="false" routerLink="/tabs/configurations/user-list">
+          <ion-item *ngIf="currentEmployeeRol == 'administrador' || currentEmployeeRol == 'encargado'" button="true" type="button" detail="false" routerLink="/tabs/configurations/user-list">
             Usuarios
             <span slot="end">
               <ion-icon name="people-outline"></ion-icon>
@@ -23,7 +23,7 @@
               <ion-icon name="storefront-outline"></ion-icon>
             </span>
           </ion-item>
-          <ion-item *ngIf="currentEmployeeRol === 'administrador'" button="true" type="button" detail="false" routerLink="/tabs/configurations/vehicle-list">
+          <ion-item *ngIf="currentEmployeeRol == 'administrador' || currentEmployeeRol == 'encargado'" button="true" type="button" detail="false" routerLink="/tabs/configurations/vehicle-list">
             Vehiculos
             <span slot="end">
               <ion-icon name="car-outline"></ion-icon>

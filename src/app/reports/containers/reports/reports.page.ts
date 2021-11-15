@@ -1,5 +1,4 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ViewWillEnter } from '@ionic/angular';
 import { OfficeService } from 'src/app/configurations/services/office.service';
 import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
 import { ReportService } from '../../services/report.service';
@@ -75,7 +74,6 @@ export class ReportsPage implements OnInit, AfterViewInit {
   }
 
   filterEvent(response) {
-    console.log(response);
     this.loadingHelper.present();
     if (this.currentSegment === 'report-1') {
       this.getReport1Data(response.office);
