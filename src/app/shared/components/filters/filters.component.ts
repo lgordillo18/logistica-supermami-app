@@ -11,7 +11,8 @@ import * as moment from 'moment';
 })
 export class FiltersComponent implements OnInit {
   @Input() totalFilters: number = 1;
-  @Input() offices: any[];
+  @Input() offices: any[] = [];
+  @Input() ticketStatus: any[] = [];
   @Input() enableDateFilter: boolean = false;
   @Output() filterEvent = new EventEmitter<any>(); 
   
@@ -37,6 +38,9 @@ export class FiltersComponent implements OnInit {
       this.showOfficeFilter = true;
       this.filterForm.addControl('office',this.formBuilder.control(''));
     }
+    if (this.ticketStatus) {
+      this.filterForm.addControl('ticket_status',this.formBuilder.control(''));
+    }
     if (this.enableDateFilter) {
       this.filterForm.addControl('date',this.formBuilder.control(''));
     }
@@ -51,6 +55,10 @@ export class FiltersComponent implements OnInit {
 
     if (this.filterForm.get('office').value) {
       response.office = this.filterForm.get('office').value;
+    }
+
+    if (this.filterForm.get('ticket_status').value) {
+      response.ticket_status = this.filterForm.get('ticket_status').value;
     }
 
     if (this.dateTo && this.dateFrom) {

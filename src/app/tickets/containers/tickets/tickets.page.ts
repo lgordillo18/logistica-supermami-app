@@ -1,16 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 import { OfficeService } from 'src/app/configurations/services/office.service';
 import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
 import { TicketService } from '../../services/ticket.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'tickets-page',
   templateUrl: './tickets.page.html',
   styleUrls: ['./tickets.page.scss']
 })
-export class TicketsPage implements OnInit, AfterViewInit {
+export class TicketsPage implements OnInit, AfterViewInit, OnDestroy {
   public pendingTickets: any[];
   public approvedTickets: any[];
   public rejectedTickets: any[];
@@ -24,6 +26,8 @@ export class TicketsPage implements OnInit, AfterViewInit {
   public currentEmployeeRol = null;
   private currentOfficeId = null;
   public allOffices = [];
+  public allTicketStatus = [];
+  private ngUnsubscribe = new Subject();
 
   public textConfig = { primaryText: 'empleado', secondaryText: 'estado' };
 
@@ -41,7 +45,6 @@ export class TicketsPage implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // this.loadingHelper.present();
-    // this.loadingHelper.dismiss();
     this.getOffices();
     const params = this.route.snapshot.params;
     if (params.message) {
@@ -54,19 +57,20 @@ export class TicketsPage implements OnInit, AfterViewInit {
     }
     
     if (this.currentEmployeeRol === 'empleado') {
-      this.getAllEmployeeTickets();
+      this.getAllEmployeeTickets({});
     }
 
     if (this.currentEmployeeRol === 'encargado') {
-      this.getAllManagerTickets();
+      this.getAllManagerTickets({});
     }
 
     if (this.currentEmployeeRol === 'repartidor') {
-      this.getAllDealerTickets();
+      this.getAllDealerTickets({});
     }
 
     if (this.currentEmployeeRol === 'administrador') {
-      this.getAllTickets();
+      this.getTicketStatus();
+      this.getAllTickets({});
     }
   }
 
@@ -76,12 +80,18 @@ export class TicketsPage implements OnInit, AfterViewInit {
     });
   }
 
+  async getTicketStatus() {
+    this.ticketService.getTicketStatus().subscribe(async (response) => {
+      this.allTicketStatus = response ? response : [];
+    });
+  }
+
   ngAfterViewInit() {
     this.loadingHelper.dismiss();
   }
 
-  private async getAllTickets() {
-    this.ticketService.getAllTickets().subscribe(async (response) => {
+  private async getAllTickets(response = null) {
+    this.ticketService.getAllTickets(response.ticket_status, response.date_from, response.date_to).pipe(takeUntil(this.ngUnsubscribe)).subscribe(async (response) => {
       if (response) {
         this.allTickets = response;
       }
@@ -89,8 +99,8 @@ export class TicketsPage implements OnInit, AfterViewInit {
     });
   }
 
-  private async getAllEmployeeTickets() {
-    this.ticketService.getAllEmployeeTickets(this.employeeId).subscribe(async (response) => {
+  private async getAllEmployeeTickets(response = null) {
+    this.ticketService.getAllEmployeeTickets(this.employeeId, response.office, response.date_from, response.date_to).pipe(takeUntil(this.ngUnsubscribe)).subscribe(async (response) => {
       if (response) {
         this.pendingTickets = response.pendingTickets ? response.pendingTickets.reverse() : [];
         this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
@@ -100,8 +110,8 @@ export class TicketsPage implements OnInit, AfterViewInit {
     });
   }
 
-  private async getAllManagerTickets() {
-    this.ticketService.getAllManagerTickets(this.currentOfficeId).subscribe(async (response) => {
+  private async getAllManagerTickets(response = null) {
+    this.ticketService.getAllManagerTickets(this.currentOfficeId, response.office, response.date_from, response.date_to).pipe(takeUntil(this.ngUnsubscribe)).subscribe(async (response) => {
       if (response) {
         this.pendingTickets = response.pendingTickets ? response.pendingTickets : [];
         this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
@@ -111,8 +121,8 @@ export class TicketsPage implements OnInit, AfterViewInit {
     });
   }
 
-  private async getAllDealerTickets() {
-    this.ticketService.getAllDealerTickets(this.employeeId).subscribe(async (response) => {
+  private async getAllDealerTickets(response = null) {
+    this.ticketService.getAllDealerTickets(this.employeeId, response.office, response.date_from, response.date_to).pipe(takeUntil(this.ngUnsubscribe)).subscribe(async (response) => {
       if (response) {
         this.approvedTickets = response.approvedTickets ? response.approvedTickets : [];
         this.deliveredTickets = response.deliveredTickets ? response.deliveredTickets : [];
@@ -138,9 +148,22 @@ export class TicketsPage implements OnInit, AfterViewInit {
   }
 
   filterEvent(response) {
-    console.log(response);
-    // this.loadingHelper.present();
-    
+    this.loadingHelper.present();
+    if (this.currentEmployeeRol === 'empleado') {
+      this.getAllEmployeeTickets(response);
+    }
+
+    if (this.currentEmployeeRol === 'encargado') {
+      this.getAllManagerTickets(response);
+    }
+
+    if (this.currentEmployeeRol === 'repartidor') {
+      this.getAllDealerTickets(response);
+    }
+
+    if (this.currentEmployeeRol === 'administrador') {
+      this.getAllTickets(response);
+    }
   }
 
   get totalFilters() {
@@ -149,5 +172,10 @@ export class TicketsPage implements OnInit, AfterViewInit {
     } else {
       return 2;
     }
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 }

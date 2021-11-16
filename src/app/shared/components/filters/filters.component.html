@@ -7,11 +7,18 @@
   <form [formGroup]="filterForm">
     <ion-row *ngIf="showFilters" class="filters">
       <ion-col size="{{ columnSize }}">
-        <ion-item>
+        <ion-item *ngIf="offices.length > 0">
           <ion-icon class="ion-align-self-center" name="business-outline" slot="start">
           </ion-icon>
           <ion-select placeholder="Sucursal" okText="Ok" cancelText="Cancelar" formControlName="office">
             <ion-select-option *ngFor="let item of offices" value="{{ item.id }}">{{ item.name | capitalize }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item *ngIf="ticketStatus.length > 0">
+          <ion-icon class="ion-align-self-center" name="albums-outline" slot="start"></ion-icon>
+          <ion-select placeholder="Estado" okText="Ok" cancelText="Cancelar" formControlName="ticket_status">
+            <ion-select-option *ngFor="let item of ticketStatus" value="{{ item.id }}">{{ item.name | capitalize }}
             </ion-select-option>
           </ion-select>
         </ion-item>
