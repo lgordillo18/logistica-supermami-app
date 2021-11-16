@@ -11,8 +11,19 @@ export class ReportService {
     private http: HttpClient) {
   }
 
-  getReport1(officeId = null): Observable<any> {
-    const url = officeId ? `/report-top-10/${officeId}` : `/report-top-10`;
+  getReport1(officeId = null, date_from = null, date_to = null): Observable<any> {
+    let url = '';
+
+    if (!officeId && !date_from && !date_to) {
+      url = `/report-top-10`;
+    } else if (officeId && !date_from && !date_to) {
+      url = `/report-top-10/${officeId}`;
+    } else if (!officeId && date_from && date_to) {
+      url = `/report-top-10/${date_from}/${date_to}`;
+    } else {
+      url = `/report-top-10/${officeId}/${date_from}/${date_to}`;
+    }
+
     return this.http.get<any>(`${environment.apiUrl}${url}`, {});
   }
 

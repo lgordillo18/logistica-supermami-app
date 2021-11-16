@@ -18,7 +18,7 @@
             <ion-label class="ion-text-capitalize segment-label"> Estado de Tickets </ion-label>
           </ion-segment-button>
         </ion-segment>
-        <filters [offices]="allOffices" [totalFilters]="totalFilters" [enableDateFilter]="enabledDateFilter" (filterEvent)="filterEvent($event)"></filters>
+        <filters [offices]="allOffices" [totalFilters]="2" [enableDateFilter]="true" (filterEvent)="filterEvent($event)"></filters>
         <top-10-products-chart-component *ngIf="currentSegment === 'report-1'" [data]="chartData1">
         </top-10-products-chart-component>
         <orders-delayed-chart-component *ngIf="currentSegment === 'report-2'" [data]="chartData2">

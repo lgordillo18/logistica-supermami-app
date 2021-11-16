@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'configurations',
@@ -7,10 +8,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ConfigurationsPage implements OnInit {
   public currentEmployeeRol = null;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.currentEmployeeRol = localStorage.getItem('current_employee_rol');
   }
 
   ngOnInit() {
+  }
+
+  logoutAction() {
+    localStorage.removeItem('current_employee_id');
+    localStorage.removeItem('current_employee_rol');
+    localStorage.removeItem('current_office_id');
+    this.router.navigate(['/logout']);
   }
 }

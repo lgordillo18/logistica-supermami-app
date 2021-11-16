@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { OfficeService } from 'src/app/configurations/services/office.service';
 import { LoadingHelper } from 'src/app/shared/helpers/loading.helper';
 import { ReportService } from '../../services/report.service';
@@ -8,7 +8,7 @@ import { ReportService } from '../../services/report.service';
   templateUrl: './reports.page.html',
   styleUrls: ['./reports.page.scss']
 })
-export class ReportsPage implements OnInit, AfterViewInit {
+export class ReportsPage implements OnInit {
   public currentSegment: string = 'report-1';
   public chartData1 = [];
   public chartData2 = [];
@@ -23,12 +23,8 @@ export class ReportsPage implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    // this.loadingHelper.present();
     this.getOffices();
-    this.getReport1Data();
-  }
-  
-  ngAfterViewInit() {
+    this.getReport1Data({});
   }
 
   segmentChanged(event) {
@@ -46,8 +42,8 @@ export class ReportsPage implements OnInit, AfterViewInit {
     });
   }
 
-  async getReport1Data(officeId = null) {
-    this.reportService.getReport1(officeId).subscribe(async (response) => {
+  async getReport1Data(response) {
+    this.reportService.getReport1(response.office, response.date_from, response.date_to).subscribe(async (response) => {
       if (response) {
         this.chartData1 = response;
       }
@@ -76,7 +72,7 @@ export class ReportsPage implements OnInit, AfterViewInit {
   filterEvent(response) {
     this.loadingHelper.present();
     if (this.currentSegment === 'report-1') {
-      this.getReport1Data(response.office);
+      this.getReport1Data(response);
     }
     if (this.currentSegment === 'report-2') {
       this.getReport2Data(response);
@@ -84,13 +80,5 @@ export class ReportsPage implements OnInit, AfterViewInit {
     if (this.currentSegment === 'report-3') {
       this.getReport3Data(response);
     }
-  }
-
-  get enabledDateFilter() {
-    return this.currentSegment !== 'report-1' ? true : false;
-  }
-
-  get totalFilters() {
-    return this.currentSegment !== 'report-1' ? 2 : 1;
   }
 }
